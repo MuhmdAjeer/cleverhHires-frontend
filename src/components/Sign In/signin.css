@@ -4,10 +4,10 @@
 
     /* height: f; */
     width: 400px;
-
+    background-color: white;
     /* border: 1px solid black; */
     border-radius: 10px;
-    box-shadow: 0 0 5px 5px #f1f1f1;
+    box-shadow: 0 0 5px 5px #00000009;
     /* border-color: red; */
 }
 

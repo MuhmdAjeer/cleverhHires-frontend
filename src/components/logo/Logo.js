@@ -3,7 +3,7 @@ import './logo.css'
 
 function Logo() {
   return (
-    <h1 className='logo' >CleverHires</h1>
+    <h1 className='logo'>CleverHires</h1>
   )
 }
 
