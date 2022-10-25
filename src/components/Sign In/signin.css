@@ -1,0 +1,19 @@
+.signup-container{
+    margin: 10px;
+    padding: 25px;
+
+    /* height: f; */
+    width: 400px;
+
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    box-shadow: 0 0 5px 5px #f1f1f1;
+    /* border-color: red; */
+}
+
+@media only screen and (max-width: 600px) {
+    .signup-container{
+
+    }
+    
+  } 

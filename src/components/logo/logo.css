@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+.logo {
+    font-family: 'Alata', sans-serif;
+    color: #2274A5;
+    margin: 0;
+    margin-left: 25px;
+    margin-top: 10px;
+}

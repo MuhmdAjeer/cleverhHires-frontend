@@ -1,9 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+// import ds from '../public/cleverhires.png'
+
+import Logo from "./components/logo/Logo"
+import SignIn from "./components/Sign In/SignIn";
 
 function App() {
   return (
-    <h1>Clever Hires</h1>
+    <>
+    <Logo > </Logo>
+    <SignIn></SignIn>
+    </>
   );
 }
 
