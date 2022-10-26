@@ -1,6 +1,5 @@
 import React,{useEffect} from 'react'
 import { Grid, Button } from '@mui/material'
-import axios from '../../axios'
 
 import Container from '../Container/Container'
 import './signin.css'
@@ -9,12 +8,6 @@ import Input from '../Input/Input'
 
 
 function SignIn() {
-    useEffect(()=>{
-        axios.get().then((response)=>{
-            console.log(response);
-        })
-        .catch((err)=> console.log(err))
-    })
     return (
                 <Container>
                     <h1>Sign In</h1>
