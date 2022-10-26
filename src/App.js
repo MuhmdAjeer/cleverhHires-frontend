@@ -1,13 +1,15 @@
-// import ds from '../public/cleverhires.png'
+import React from "react";
 
-import Logo from "./components/logo/Logo"
-import SignIn from "./components/Sign In/SignIn";
+import SignIn from "./Pages/SignIn";
+import Register from "./Pages/Register";
+
 
 function App() {
   return (
     <>
-    <Logo > </Logo>
-    <SignIn></SignIn>
+    <SignIn/>
+    {/* <Register/> */}
+
     </>
   );
 }
