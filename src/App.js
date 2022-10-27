@@ -1,16 +1,16 @@
 import React from "react";
+import {BrowserRouter as Router,} from "react-router-dom";
 
-import SignIn from "./Pages/SignIn";
-import Register from "./Pages/Register";
+import Routed from './Routes'
+
 
 
 function App() {
   return (
-    <>
-    <SignIn/>
-    {/* <Register/> */}
-
-    </>
+  <Router>
+    <Routed/>
+  </Router>  
+  
   );
 }
 
