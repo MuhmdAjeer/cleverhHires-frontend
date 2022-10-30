@@ -1,16 +1,18 @@
 import React from "react";
-import {BrowserRouter as Router,} from "react-router-dom";
-
+import { BrowserRouter as Router, } from "react-router-dom";
+import Toast from "./components/Toast";
 import Routed from './Routes'
 
 
 
 function App() {
   return (
-  <Router>
-    <Routed/>
-  </Router>  
-  
+    <>
+      <Toast />
+      <Router>
+        <Routed />
+      </Router>
+    </>
   );
 }
 

@@ -1,3 +1,4 @@
 module.exports = {
-    SIGNIN : 'SIGNIN'
+    SIGNIN : 'SIGNIN',
+    SIGNUP : 'SIGNUP'
 }
