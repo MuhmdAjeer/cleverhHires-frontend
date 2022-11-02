@@ -12,7 +12,7 @@ const Navbar = () => {
   const [value, setValue] = useState()
   return (
     <React.Fragment>
-      <AppBar sx={{ backgroundColor: 'white' , marginBottom : "15px"}} position="sticky" elevation={0} >
+      <AppBar sx={{ backgroundColor: 'white' , marginBottom : "15px" ,zIndex:999 }} position="sticky" elevation={0} >
         <Toolbar>
           <Logo />
 
