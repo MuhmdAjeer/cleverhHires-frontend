@@ -4,6 +4,7 @@ import { Routes as Switch, Route, Navigate, useLocation } from 'react-router-dom
 import SignIn from "./Pages/SignIn";
 import Register from "./Pages/Register";
 import Verifyotp from "./Pages/Verifyotp";
+import Home from './Pages/Home/Home';
 
 
 
@@ -19,7 +20,7 @@ function Routes() {
 
   return (
     <Switch>
-      <Route path='/' element={user ? <h1>Home Page</h1> : <Navigate to='/signin' />} />
+      <Route path='/' element={user ? <Home/> : <Navigate to='/signin' />} />
       <Route path='/signin' element={user ? <Navigate to='/' /> : <SignIn />} />
       <Route path='/signup' element={user ? <Navigate to='/' /> : <Register />} />
       <Route path='/verify' element={user ? <Navigate to='/' /> : <Verifyotp />} />

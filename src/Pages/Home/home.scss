@@ -1,0 +1,13 @@
+.home_container{
+    display: flex;
+    width: 100%;
+}
+
+.leftbar {
+    flex: 2;
+    height: 100vh;
+    
+    .leftbar_wrapper {
+        margin: 10px;
+    }
+}

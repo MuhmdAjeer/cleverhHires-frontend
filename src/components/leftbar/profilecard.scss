@@ -1,0 +1,71 @@
+$small: 500px;
+$medium: 900px;
+$primary:#2274A5;
+
+.card_container {
+    flex: 3;
+    height: 100vh;
+    @media screen and (max-width: $medium) {
+        flex: 12;
+    }
+
+
+
+    .card {
+        background-color: white;
+        border: 0.5px solid rgb(219, 219, 219);
+        margin: 10px;
+        padding: 10px;
+        -webkit-box-shadow: 0px 0px 19px -10px rgba(0, 0, 0, 0.22);
+        -moz-box-shadow: 0px 0px 19px -10px rgba(0, 0, 0, 0.22);
+        box-shadow: 0px 0px 19px -10px rgba(0, 0, 0, 0.22);
+        border-radius: 10px;
+        color: gray;
+
+        .profile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+
+            margin-right: 10px;
+
+        }
+
+        ul {
+
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            margin-top: 10px;
+            li {
+                display: flex;
+                height: 40px;
+                // padding-top: 10px;
+                align-items: center;
+                padding-left: 15px;
+                margin-bottom: 5px;
+                border-radius: 5px;
+                background-color: rgb(235, 235, 235);
+
+                span{
+                    margin-left: 10px;
+                }
+
+
+                &:hover{
+                cursor: pointer;
+                background-color: $primary;
+                color: white;
+                }
+    
+            }
+        }
+
+    }
+}

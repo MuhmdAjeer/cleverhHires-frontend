@@ -6,7 +6,7 @@ export const reducer = (state = { signupData: null, user: null }, action) => {
             console.log(action.payload);
             return { ...state, signupData: action?.payload };
         case SIGNIN:
-            return { ...state, user: action?.payload }
+            return { ...state, user: action?.payload?.user }
         default:
             return state;
     }
