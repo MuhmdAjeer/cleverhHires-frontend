@@ -1,6 +1,7 @@
-import { Cancel, PermMedia ,VideoCameraFront, Work } from '@mui/icons-material' 
+import {  PermMedia ,VideoCameraFront, Work } from '@mui/icons-material' 
 import { useState } from 'react';
 import Modal from '../modal/Modal';
+import { CreatePost } from './create-post/CreatePost';
 
 
 import './share.scss'
@@ -9,7 +10,7 @@ const MODAL_STYLE = {
   position:"fixed",
   display:"flex",
   width:"40%",
-  top:'30%',
+  top:'50%',
   borderRadius : "10px",
   left:'50%',
   transform:"translate(-50%,-50%)",
@@ -18,11 +19,19 @@ const MODAL_STYLE = {
   zIndex:1000
 }
 
+
 const Share = () => {
-
-const [isOpen,setOpen] = useState(false);
-
-
+  
+  const [isOpen,setOpen] = useState(false);
+  const [selectedImage,setImage] = useState(null)  
+  const handlePostImage = (event) =>{
+    const image  = event.target.files[0];
+    console.log(image);
+    const imgURL = URL.createObjectURL(image)
+    setImage(imgURL);
+  }
+  
+  
 
   return (
     <>
@@ -54,22 +63,7 @@ const [isOpen,setOpen] = useState(false);
       </div>
     </div>
     <Modal containerStyle={MODAL_STYLE} open={isOpen} onClose={()=>setOpen(false)} >
-      <div className="create_post_modal">
-        <div className="modal_top">
-          <span className='modal_header'>Create a post</span>
-          <Cancel onClick={()=>setOpen(false)} className='cancel_icon' />
-        </div>
-        <div className="modal_body">
-            <input type="file" id='image_input' />
-            <label className='img_label' htmlFor="image_input">Select image to share</label>
-        </div>
-        <div className="modal_bottom">
-          <div className="modal_actions">
-            <button className='btn_cancel' >Cancel</button>
-            <button className='btn_done' >Done</button>
-          </div>
-        </div>
-      </div>
+      <CreatePost close={()=>setOpen(false)} />
     </Modal>
     </>
     

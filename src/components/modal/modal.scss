@@ -1,0 +1,9 @@
+$small: 500px;
+$medium: 900px;
+#container{
+
+    @media screen and (max-width: $small) {
+        width: 70% !important;
+    }
+
+}

@@ -1,4 +1,5 @@
 import ReactDOM from "react-dom";
+import './modal.scss'
 
 const OVERLAY_STYLE = {
     position : "fixed",
@@ -18,7 +19,7 @@ if(!open) return null;
   return ReactDOM.createPortal(
     <>
     <div style={OVERLAY_STYLE}> 
-    <div style={containerStyle} >
+    <div id="container" style={containerStyle} >
     {children}
     </div>
     </div>
