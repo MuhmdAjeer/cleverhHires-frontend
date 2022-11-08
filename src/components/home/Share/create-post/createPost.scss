@@ -89,7 +89,7 @@ $primary:#2274A5;
 }
 
 .create_post_input{
-    width: 90%;
+    width: 95%;
     height: 20px;
     margin-bottom: 10px;
     outline: none;
@@ -97,7 +97,7 @@ $primary:#2274A5;
     font-weight: bold;
     font-size: 14px;
     color: gray;
-
+    resize: none;
     &:hover{
         outline: none;
     }

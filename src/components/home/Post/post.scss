@@ -20,6 +20,10 @@ $primary:#2274A5;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        background-color: #efefef;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 0;
 
         .post_top_left{
             display: flex;
@@ -55,17 +59,16 @@ $primary:#2274A5;
     }
 
     .post_center{
-        margin: 20px 0;
+        margin: 10px 0;
 
     }
 
     .post_img{
-        margin-top: 20px;
+        margin-top: 10px;
         width: 100%;
         max-height: 500px;
         object-fit: contain;
         border-radius: 5px;
-
     }
 
     .post_bottom{

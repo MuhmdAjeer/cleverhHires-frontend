@@ -5,8 +5,9 @@ $primary:#2274A5;
 .card_container {
     flex: 3;
     height: 100vh;
-    @media screen and (max-width: $medium) {
+    @media screen and (max-width: $small) {
         flex: 12;
+        display: none;
     }
 
 

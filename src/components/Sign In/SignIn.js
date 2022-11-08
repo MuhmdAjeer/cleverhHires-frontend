@@ -54,7 +54,7 @@ function SignIn() {
 
             <h1>Sign In</h1>
 
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error mollitia iure, odit a sit ab.</p>
+            <p>Get signed into the world of job hirers and seekers!</p>
             <TextField sx={{ mb: '15px' }} value={formik.values.email} onChange={formik.handleChange} name='email' onBlur={formik.handleBlur} error={formik.errors.email && formik.touched.email} required fullWidth variant='filled' size='small' label={'Email'} ></TextField>
             <TextField type='password' sx={{ mb: '15px' }} value={formik.values.password} onChange={formik.handleChange} name='password' onBlur={formik.handleBlur} error={formik.errors.password && formik.touched.password} required fullWidth variant='filled' size='small' label={'Password'} ></TextField>
 

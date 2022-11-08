@@ -1,9 +1,8 @@
 
-import Feed from '../../components/feed/Feed'
-import ProfileCard from '../../components/leftbar/ProfileCard'
+import Feed from '../../components/home/Feed'
+import ProfileCard from '../../components/home/leftbar/ProfileCard'
 import Navbar from '../../components/NavBar/Navbar'
-import Share from '../../components/Share/Share'
-import { RightBar } from '../../components/rightbar/RightBar'
+import { RightBar } from '../../components/home/rightbar/RightBar'
 import './home.scss'
 
 const Home = () => {
@@ -13,7 +12,6 @@ const Home = () => {
       <div className="home_container">
           <ProfileCard/>
           <Feed/>
-          {/* <Share/> */}
           <RightBar/>
       </div>
 

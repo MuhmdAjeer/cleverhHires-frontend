@@ -1,0 +1,15 @@
+$small: 500px;
+$medium: 900px;
+$primary:#2274A5;
+
+.feed{
+    flex: 5.5;
+
+    @media screen and (max-width: $small) {
+        flex: 12;
+    }
+
+    .feed_wrapper{
+        padding: 10px;
+    }
+}
