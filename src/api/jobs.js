@@ -15,3 +15,10 @@ export const becomeHirer = (formData) =>
       Authorization: `Bearer ${token}`,
     },
   });
+
+export const getHirer = () =>
+  API.post("/hirer", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });

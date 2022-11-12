@@ -6,6 +6,8 @@ import Register from "./Pages/Register";
 import Verifyotp from "./Pages/Verifyotp";
 import Home from './Pages/Home/Home';
 import BecomeHirer from './Pages/user/BecomeHirer';
+import Protected from './Protected';
+import PostJob from './Pages/user/jobs/PostJob';
 
 
 
@@ -21,11 +23,15 @@ function Routes() {
 
   return (
     <Switch>
-      <Route path='/' element={user ? <Home/> : <Navigate to='/signin' />} />
-      <Route path='/become-hirer' element={user ? <BecomeHirer/> : <Navigate to='/signin' />} />
+      {/* //auth */}
       <Route path='/signin' element={user ? <Navigate to='/' /> : <SignIn />} />
       <Route path='/signup' element={user ? <Navigate to='/' /> : <Register />} />
       <Route path='/verify' element={user ? <Navigate to='/' /> : <Verifyotp />} />
+
+      {/* <Route path='/become-hirer' element={<Protected Children={<BecomeHirer/>} />} /> */}
+      <Route path='/' element={user ? <Home/> : <Navigate to='/signin' />} />
+      <Route path='/become-hirer' element={user ? <BecomeHirer/> : <Navigate to='/signin' />} />
+      <Route  path='post-job' element={<PostJob/>} /> 
     </Switch>
   )
 }

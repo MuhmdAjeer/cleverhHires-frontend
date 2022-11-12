@@ -1,20 +1,28 @@
 import { Button, TextField } from "@mui/material";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { becomeHirer } from "../../actions/hire";
+
 import Navbar from "../../components/NavBar/Navbar";
 import "./becomeHirer.scss";
 
 function BecomeHirer() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { token } = JSON.parse(localStorage.getItem("user"));
+  const [role, setRole] = useState();
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({});
   const handleSubmit = () => {
-    dispatch(becomeHirer(form));
+    dispatch(becomeHirer(form, navigate, setLoading));
   };
   const handleChange = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
+
   return (
     <>
       <Navbar />
@@ -62,6 +70,7 @@ function BecomeHirer() {
               />
 
               <Button
+                disabled={loading}
                 type="submit"
                 onClick={handleSubmit}
                 variant="contained"

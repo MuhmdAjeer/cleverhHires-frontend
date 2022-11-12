@@ -1,0 +1,125 @@
+$small: 500px;
+$medium: 900px;
+$primary:#2274A5;
+
+
+
+.post_job_container {
+    display: flex;
+    justify-content: center;
+
+    .form_inputs {
+        margin: 10px;
+        padding: 10px;
+
+    }
+
+
+    .form_container {
+        margin: 10px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 5px 5px #00000009;
+        border : 1px solid #dfdfdf;        
+        // height: 80vh;
+        width: 30%;
+
+
+    @media screen and (max-width: $medium) {
+        width: 50%;
+    }
+
+    @media screen and (max-width: $small) {
+        width: 80%;
+    }
+
+
+
+    }
+}
+
+.next_btn {
+    outline: none;
+    border: none;
+    background-color: rgb(46, 84, 155);
+    color: white;
+    border-radius: 5px;
+    height: 30px;
+    margin: 15px;
+    padding: 0 25px;
+    font-weight: bold;
+
+    &:hover {
+        background-color: rgb(0, 39, 110);
+        cursor: pointer;
+    }
+}
+
+.prev_btn {
+    outline: none;
+    border: none;
+    background-color: rgb(24, 25, 26);
+    color: white;
+    border-radius: 5px;
+    height: 30px;
+    // margin: 15px;
+    padding: 0 25px;
+    font-weight: bold;
+
+    &:hover {
+        background-color: rgb(0, 0, 0);
+        cursor: pointer;
+    }
+}
+
+.job_description{
+    margin: 0;
+    border: none;
+    background-color: #f8f8f8;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    // width: 85%;
+    // max-height: 70%;
+    resize: none;
+    &:focus {
+        outline: none;
+    }
+}
+
+.skills{
+    // width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    // flex-shrink: 0;
+    margin-top: 5px;
+    // flex: content;
+}
+
+.skill{
+    font-size: smaller;
+    margin: 5px;
+    width: max-content;
+    border-radius: 20px;
+    padding: 5px 15px;
+    background-color: #479938;
+    color: white;
+    cursor: pointer;
+    &:hover{
+    background-color: #236e16;
+
+    }
+}
+
+.close_mark{
+    font-weight: bold;
+    margin-left: 5px;
+    cursor: pointer;
+}

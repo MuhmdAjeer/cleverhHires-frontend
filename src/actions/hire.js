@@ -1,15 +1,23 @@
 import * as API from "../api/jobs";
 import { toast } from "react-hot-toast";
-import swal from "sweetalert2";
+
+
 
 export const becomeHirer = (formData, navigate, loading) => {
-  try {
+    loading(true);
     API.becomeHirer(formData)
+    
       .then((response) => {
+        loading(false);
+        navigate("/");
         toast.success("Your application has been sended");
       })
       .catch((err) => {
-        toast.error("Application failed");
+        loading(false);
+        const error = err.response.data.message;
+        toast.error(error);
       });
-  } catch (error) {}
 };
+
+
+

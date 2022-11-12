@@ -5,6 +5,7 @@ $medium: 900px;
 
 
 .container {
+  
   display: flex;
   
   @media screen and (max-width: $medium) {

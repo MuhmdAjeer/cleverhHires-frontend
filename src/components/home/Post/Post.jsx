@@ -18,7 +18,7 @@ export default function Post({ post }) {
           </div>
         </div>
         <div className="post_center">
-          <span className="post_text">Hey! its my first Post:</span>
+          <span className="post_text">{post.description}</span>
           <img src={post.imageUrl} className="post_img" alt="" />
         </div>
         <div className="post_bottom">
