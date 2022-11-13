@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import './profilecard.scss'
 import { People, RssFeed, Work ,Group } from '@mui/icons-material'
 import jwtDecode from 'jwt-decode'
+import {  useNavigate } from 'react-router-dom'
 
 const ProfileCard = () => {
   const [user,setUser] = useState({})
+  const navigate = useNavigate()
   useEffect(()=>{
   const { token } = JSON.parse(localStorage.getItem('user'))
      const userData = jwtDecode(token)
@@ -24,7 +26,7 @@ const ProfileCard = () => {
             <RssFeed />
             <span>Posts</span>
           </li>
-          <li>
+          <li onClick={()=> navigate('/jobs')} >
             <Work />
             <span>Jobs</span>
           </li>

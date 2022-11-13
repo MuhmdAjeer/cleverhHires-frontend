@@ -1,0 +1,104 @@
+.job_card{
+    background-color: white;
+    // width: 60%;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 5px #00000009;
+    border : 1px solid #dfdfdf;
+    margin: 10px;     
+
+    .card_container{
+        margin: 10px;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+
+        .top_left{
+            display: flex;
+            // align-items: center;
+
+            .top_left_details{
+                display: flex;
+                flex-direction: column;
+            
+            }
+                 
+            img{
+                height: 60px;
+                width: 60px;
+                object-fit: cover;
+                border-radius: 10%;
+                margin-right: 10px;
+            }
+
+            .company_name,.location{
+                font-size: 0.8rem;
+            }
+            .job_role{
+                font-weight: bold;
+            }
+
+
+        }
+    }
+}
+
+.center_left{
+    display: flex;
+    width: 60%;
+    flex-wrap: wrap;
+}
+
+.employment_card{
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    background-color : rgb(224, 224, 224);
+    color: rgb(75, 75, 75);
+    width: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 5px;
+
+    span{
+        margin-left: 5px;
+    }
+    // justify-content: center;
+}
+
+.right{
+    display: flex;
+    height: 50px;
+
+    button{
+        background-color: rgb(8, 81, 141);
+        color: white;
+        border-radius: 5px;
+        box-shadow: none;
+        outline: none;
+        border: none;
+        height: 25px;
+        padding: 0 15px;
+        margin-right: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        &:hover{
+            background-color: rgb(36, 106, 163);
+        }
+    }
+
+    div{
+        background-color: white;
+        border: 1px solid rgba(147, 194, 231, 0.26);
+        height: 25px;
+        color: rgb(8, 81, 141);
+        border-radius: 5px;
+    }
+}
+
+.job_time{
+    font-size: 0.8rem;
+    color: rgb(80, 80, 80);
+    margin-top: 5px;
+}

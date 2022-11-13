@@ -8,6 +8,7 @@ import Home from './Pages/Home/Home';
 import BecomeHirer from './Pages/user/BecomeHirer';
 import Protected from './Protected';
 import PostJob from './Pages/user/jobs/PostJob';
+import Jobs from './Pages/user/jobs/Jobs';
 
 
 
@@ -30,8 +31,12 @@ function Routes() {
 
       {/* <Route path='/become-hirer' element={<Protected Children={<BecomeHirer/>} />} /> */}
       <Route path='/' element={user ? <Home/> : <Navigate to='/signin' />} />
+ 
       <Route path='/become-hirer' element={user ? <BecomeHirer/> : <Navigate to='/signin' />} />
-      <Route  path='post-job' element={<PostJob/>} /> 
+      <Route  path='/post-job' element={<PostJob/>} /> 
+      <Route  path='/jobs' element={<Jobs/>} /> 
+      
+      <Route path='*' element={<h1>not found</h1>} />
     </Switch>
   )
 }

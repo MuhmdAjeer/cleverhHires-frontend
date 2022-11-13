@@ -27,7 +27,7 @@ function BecomeHirer() {
     <>
       <Navbar />
       <div className="container">
-        <div className="left">
+        <div className="become_hire_left">
           <div>
             <h1>
               Become a<br />
@@ -37,7 +37,7 @@ function BecomeHirer() {
           </div>
         </div>
 
-        <div className="right">
+        <div className="become_hire_right">
           <div className="hirer_form">
             <div>
               <TextField
