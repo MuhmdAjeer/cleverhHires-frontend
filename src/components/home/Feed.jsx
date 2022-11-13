@@ -18,7 +18,7 @@ function Feed() {
   
   useEffect(() => {
     dispatch(getAllPosts());
-  },[posts]);
+  },[]);
 
 
   return (

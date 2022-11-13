@@ -129,3 +129,20 @@ $primary:#2274A5;
     padding: 0;
     color:#2274A5;
 }
+
+// hr { margin-bottom: 1px; height: 0; border: 0; position: relative; }
+hr{
+    position: relative;
+}
+hr:after {
+  display: inline-block;
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  left: 50%; // Positioning
+  height: 1px;
+  width: 100vw;
+  background-color: #ff7171;
+  -webkit-transform: translateX(-50%); // Positioning
+  transform: translateX(-50%); // Positioning
+}

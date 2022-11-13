@@ -1,22 +1,31 @@
 import { useFormik } from 'formik'
 import { TextField } from '@mui/material'
 import * as yup from 'yup'
+import {useDispatch} from 'react-redux'
+import {useNavigate} from 'react-router-dom'
 
 
 import Navbar from "../../../components/NavBar/Navbar"
 import './PostJob.scss';
 import { useState } from 'react';
+import { postJob } from '../../../actions/jobs'
 
 const PostJob = () => {
     const [step, setStep] = useState(1)
     const [skills, setSkill] = useState([])
     const [skillValue, setSkillValue] = useState('')
-
+    const [description,setDescription] = useState('')
+    const dispatch = useDispatch()
+    const [loading,setLoading] = useState(false);
+    const navigate = useNavigate()
     
-    const initialValues = {
+    const initialValuesStep1 = {
         jobRole : '',
         location : "",
         workplace : "",
+    }
+
+    const initialValuesStep2 = {
         employmentType : "",
         minimumExperience: '', 
         maximumExperience:'', 
@@ -25,26 +34,36 @@ const PostJob = () => {
         skills : [],
         description : ""
     }
-    const validation = new yup.ObjectSchema({
+    const stepOneValidation = new yup.ObjectSchema({
         jobRole : yup.string().required('Required'),
         location : yup.string().required('Required'),
         workplace : yup.string().required('Required'),
+    })
+    
+    const stepTwoValidation = new yup.ObjectSchema({
         employmentType  : yup.string().required('Required'),
         minimumExperience : yup.number().required('Required'),
         maximumExperience : yup.number().required('Required'),
         minSalary : yup.number().required('Required'),
-        maxSalary : yup.number().required('Required'),
-        description : yup.string().required('Required') 
-    })
-    
-    const formik = useFormik({
-        initialValues,
-        validationSchema : validation,
-        onSubmit : (values)=>{
-            console.log(values);
-        } 
+        maxSalary : yup.number().required('Required')       
     })
 
+    const step1 =useFormik({
+        initialValues : initialValuesStep1,
+        validationSchema : stepOneValidation,
+        onSubmit : (values)=>{
+            setStep(step + 1)
+        }
+    })
+
+    const step2 = useFormik({
+        initialValues : initialValuesStep2,
+        validationSchema : stepTwoValidation,
+        onSubmit : (values)=>{
+            setStep(step + 1)
+        }
+    })
+    
 
     const addSkill = (e) => {
         console.log(skills);
@@ -59,15 +78,19 @@ const PostJob = () => {
             setStep(step - 1)
         }
         if (count === 1 && step !== 4) {
-            if(step === 1 & !formik.errors.jobRole && !formik.errors.location && !formik.errors.workplace){
                 setStep(step + 1)
-            }
         }
 
     }
 
     const removeSkill = (removingSkill) => {
         setSkill((current) => current.filter((skill) => skill !== removingSkill))
+    }
+
+
+    const handleJobUpload = ()=>{
+        const jobPostForm = {...step1.values,...step2.values,skills,description}
+        dispatch(postJob(jobPostForm,navigate,setLoading))
     }
     return (
         <>
@@ -77,30 +100,30 @@ const PostJob = () => {
                 <div className="form_container">
                     <div className="form_inputs">
                         <h1 className='post_job_heading' >Post Job</h1>
+                    
                         {(() => {
 
                             switch (step) {
                                 case 1:
                                     return (
                                         <>
-                                        
-                                            <Input  error={formik.errors.jobRole && formik.touched.jobRole} label='Job Role' value={formik.values.jobRole} onChange={formik.handleChange} name='jobRole' />
-                                            <Input error={formik.errors.location && formik.touched.location} label='Location' value={formik.values.location} onChange={formik.handleChange}  name='location' />
-                                            <Input onChange={formik.handleChange} value={formik.values.workplace} error={formik.errors.workplace && formik.touched.workplace} label='Workplace Type' name='workplace' />
-                                            <button onClick={formik.handleSubmit}> dd</button>
-                                            <button className='next_btn'  onClick={() => handleStep(1)} >Next</button>
+                                            <Input  error={step1.errors.jobRole && step1.touched.jobRole} label='Job Role' value={step1.values.jobRole} onChange={step1.handleChange} name='jobRole' />
+                                            <Input error={step1.errors.location && step1.touched.location} label='Location' value={step1.values.location} onChange={step1.handleChange}  name='location' />
+                                            <Input onChange={step1.handleChange} value={step1.values.workplace} error={step1.errors.workplace && step1.touched.workplace} label='Workplace Type' name='workplace' />
+                                            {/* <button onClick={step1.handleSubmit}> dd</button> */}
+                                            <button className='next_btn'  onClick={step1.handleSubmit} >Next</button>
                                         </>
                                     )
                                 case 2:
                                     return (
                                         <>
-                                            <Input onChange={formik.handleChange} value={formik.values.employmentType} error={formik.errors.employmentType && formik.touched.employmentType} label='Employment Type' name='employmentType' />
-                                            <Input onChange={formik.handleChange} value={formik.values.minimumExperience} error={formik.errors.minimumExperience && formik.touched.minimumExperience} label='Min experience' number name='minimumExperience' />
-                                            <Input onChange={formik.handleChange} value={formik.values.maximumExperience} error={formik.errors.maximumExperience && formik.touched.maximumExperience} label='Max experience' number name='maximumExperience' />
-                                            <Input onChange={formik.handleChange} value={formik.values.minSalary} error={formik.errors.minSalary && formik.touched.minSalary} label='Min Salary' number name='minSalary' />
-                                            <Input onChange={formik.handleChange} value={formik.values.maxSalary} error={formik.errors.maxSalary && formik.touched.maxSalary} label='Max Salary' number name='maxSalary' />
+                                            <Input onChange={step2.handleChange} value={step2.values.employmentType} error={step2.errors.employmentType && step2.touched.employmentType} label='Employment Type' name='employmentType' />
+                                            <Input onChange={step2.handleChange} value={step2.values.minimumExperience} error={step2.errors.minimumExperience && step2.touched.minimumExperience} label='Min experience' number name='minimumExperience' />
+                                            <Input onChange={step2.handleChange} value={step2.values.maximumExperience} error={step2.errors.maximumExperience && step2.touched.maximumExperience} label='Max experience' number name='maximumExperience' />
+                                            <Input onChange={step2.handleChange} value={step2.values.minSalary} error={step2.errors.minSalary && step2.touched.minSalary} label='Min Salary' number name='minSalary' />
+                                            <Input onChange={step2.handleChange} value={step2.values.maxSalary} error={step2.errors.maxSalary && step2.touched.maxSalary} label='Max Salary' number name='maxSalary' />
                                             <button className='prev_btn' onClick={() => handleStep(-1)} >Prev</button>
-                                            <button className='next_btn' onClick={() => handleStep(1)} >Next</button>
+                                            <button className='next_btn' onClick={step2.handleSubmit} >Next</button>
                                         </>
 
                                     )
@@ -131,9 +154,9 @@ const PostJob = () => {
                                 case 4:
                                     return (
                                         <>
-                                            <textarea value={formik.values.description} onChange={formik.handleChange} required placeholder='Add Job description....' className='job_description' name="description" id="" cols="43" rows="20"></textarea>
+                                            <textarea value={description} onChange={(e)=>setDescription(e.target.value)}  required placeholder='Add Job description....' className='job_description' name="description" id="" cols="43" rows="20"></textarea>
                                             <button className='prev_btn' onClick={() => handleStep(-1)} >Prev</button>
-                                            <button className='next_btn'  >Post Job</button>
+                                            <button className='next_btn' onClick={handleJobUpload} >Post Job</button>
                                         </>
                                     )
                                 default:
@@ -142,8 +165,6 @@ const PostJob = () => {
                         })()
 
                         }
-
-
                     </div>
                 </div>
             </div>

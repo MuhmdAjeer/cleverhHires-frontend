@@ -6,7 +6,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const token = user?.token;
 export const API = axios.create({
-  baseURL: "http://localhost:5000/api/v1/jobs",
+  baseURL: "http://localhost:5000/api/v1/job",
 });
 
 export const becomeHirer = (formData) =>
@@ -22,3 +22,9 @@ export const getHirer = () =>
       Authorization: `Bearer ${token}`,
     },
   });
+
+export const postJob = (formData) => API.post('/',formData,{
+  headers : {
+    Authorization: `Bearer ${token}`,
+  }
+}) 

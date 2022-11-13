@@ -16,7 +16,7 @@ export const RightBar = () => {
           <li onClick={() => navigate("/become-hirer")}>
             <span>Post Jobs</span>
           </li>
-          <li>
+          <li onClick={() => navigate("/post-job")} >
             <span>Manage Job posts</span>
           </li>
         </ul>
