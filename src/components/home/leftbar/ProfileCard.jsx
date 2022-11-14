@@ -40,6 +40,7 @@ const ProfileCard = () => {
           </li>
         </ul>
       </div>
+      
     </div>
   )
 }

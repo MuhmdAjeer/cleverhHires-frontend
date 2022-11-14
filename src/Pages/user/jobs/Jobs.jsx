@@ -1,10 +1,15 @@
-import { Fragment } from "react"
+import { Fragment, useEffect } from "react"
 import Navbar from "../../../components/NavBar/Navbar"
 import JobCard from "../../../components/user/jobCard/JobCard"
 import './Jobs.scss'
 
 
 const Jobs = () => {
+
+  useEffect(()=>{
+    
+  },[])
+
   return (
    <Fragment>
     <Navbar/>

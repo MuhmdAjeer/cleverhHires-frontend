@@ -5,6 +5,7 @@ export const reducer = (state = { posts: [],updated:false}, action) => {
         case 'ALL_POSTS':
             return { ...state, posts: action?.payload };
         case 'UPDATE_POST' :
+            console.log(state.updated);
             return {...state,updated:!state.updated}
         default:
             return state;

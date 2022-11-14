@@ -106,3 +106,121 @@ $primary:#2274A5;
         }
     }
 }
+
+.comment_container{
+    margin: 5px;
+
+    .comment_input{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+
+        
+        textarea{
+        box-sizing: border-box;
+        width: 100%;
+        height: 35px;
+        border-radius: 15px;
+        padding: 5px 10px;
+        margin-right: 5px;
+        border: 2px solid rgb(199, 199, 199);
+        resize: none;
+
+        font-family: inherit;
+
+        &:focus{
+            border: 2px solid rgb(0, 101, 126);
+            outline: none;
+            // outline: 1px solid rgb(0, 101, 126);
+        }
+    }
+
+    img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 5px;
+    }
+
+    .sendIcon{
+        background-color: rgb(50, 118, 207);
+        border-radius: 40%;
+        color: white;
+        padding: 4px;
+        // padding-left: 4px;
+        cursor: pointer;
+        &:hover{
+            background-color: #0b5681;
+        }
+    }
+}
+}
+
+.comment_card{
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    width: 100%;
+
+    img{
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+}
+
+.comment_details{
+    margin-left: 5px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+
+    background-color: rgb(238, 238, 238);
+
+    .comm_details_left{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .comm_details_right{
+        display: flex;
+        align-items: flex-start;
+
+        :first-child{
+            cursor: pointer;
+        }
+        
+
+        span{
+            font-size: 0.5rem;
+            margin-top: 7px;
+        }
+
+    }
+
+    .commenter{
+        font-weight: bold;
+        color: rgb(39, 39, 39);
+    }
+    span{
+        color: rgb(54, 54, 54);
+    }
+}
+
+.comments_box{
+    max-height: 100px;
+    overflow-y: scroll;
+}
+
+.comments_box::-webkit-scrollbar{
+    display: none;
+}
+
+.like_btn{
+    cursor: pointer;
+}

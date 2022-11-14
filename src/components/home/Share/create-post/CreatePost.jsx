@@ -57,7 +57,7 @@ export const CreatePost = ({ close }) => {
       )
       .then((response) => {
         dispatch({type:'UPDATE_POST'})
-        dispatch(getAllPosts())
+        // dispatch(getAllPosts())
         toast.success("Post Uploaded successfully");
         close();
         setImage(null);

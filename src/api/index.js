@@ -1,7 +1,5 @@
 import axios from "axios";
 
-// const { token } = JSON.parse(localStorage.getItem('user'))
-
 const user = JSON.parse(localStorage.getItem("user"));
 
 const token = user?.token;
@@ -27,5 +25,11 @@ export const uploadPost  = (formData) =>
     },
   });
 
-export const getAllPosts = () => API.get('http://localhost:5000/api/v1/user/posts');
+export const getAllPosts = () => API.get('/posts');
+
+export const likePost = (postId) => API.patch('/post/like',{postId},{
+  headers : {
+    Authorization : `Bearer ${token}`
+  }
+})
 

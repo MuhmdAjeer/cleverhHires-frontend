@@ -13,12 +13,13 @@ function Feed() {
   // const [posts, setPosts] = useState([]);
   const [postUpdate,setUpdated] = useState(false)
   const posts = useSelector((state)=> state.posts.posts)
+  const updated = useSelector((state)=>state.posts.updated)
   const dispatch = useDispatch()
   
   
   useEffect(() => {
     dispatch(getAllPosts());
-  },[]);
+  },[updated]);
 
 
   return (
