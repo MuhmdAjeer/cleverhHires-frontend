@@ -9,7 +9,7 @@ import Logo from '../logo/Logo'
 
 const Navbar = () => {
 
-  const [value, setValue] = useState()
+  const [value, setValue] = useState(0)
   return (
     <React.Fragment>
       <AppBar sx={{ backgroundColor: 'white' , marginBottom : "15px" ,zIndex:999 }} position="sticky" elevation={0} >

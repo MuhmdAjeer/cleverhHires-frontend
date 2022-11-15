@@ -22,3 +22,13 @@ export const likePost = (postId,liked) => async(dispatch)=>{
             toast.error('Failed to like the post')
         })
 }
+
+export const addComment = (comment,postId) => async(dispatch)=>{
+    API.addComment(comment,postId)
+    .then((response)=>{
+        dispatch({type:'UPDATE_POST'})
+    })
+    .catch(err => {
+        toast.error('Failed to upload comment')
+    })
+}
