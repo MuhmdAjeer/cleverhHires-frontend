@@ -1,3 +1,9 @@
+.job_card:focus{
+    outline: 2px solid #3b81b1;
+}
+
+
+
 .job_card{
     background-color: white;
     // width: 60%;
@@ -5,6 +11,10 @@
     box-shadow: 0 0 5px 5px #00000009;
     border : 1px solid #dfdfdf;
     margin: 10px;     
+
+    &:active{
+        background-color: #f8f8f8;
+    }
 
     .card_container{
         margin: 10px;

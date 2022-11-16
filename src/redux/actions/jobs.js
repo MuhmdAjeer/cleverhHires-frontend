@@ -1,4 +1,4 @@
-import * as API from "../api/jobs";
+import * as API from "../../api/jobs";
 import { toast } from "react-hot-toast";
 
 
@@ -17,3 +17,17 @@ export const postJob = (formData, navigate,loading) => {
         toast.error(error);
       });
 };
+
+export const getJobs = (loading,setJobs)=> async(dispatch) => {
+  loading(true)
+  API.getJobs()
+  .then((response)=>{
+    loading(false)
+    setJobs(response.data)
+  })
+  .catch((err)=>{
+    loading(false)
+    const error = err.response.data.message;
+    toast.error(error)
+  })
+}

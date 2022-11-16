@@ -1,4 +1,4 @@
-import { SIGNIN, SIGNUP } from '../constants/actionTypes'
+import { SIGNIN, SIGNUP } from '../../constants/actionTypes'
 
 export const reducer = (state = { posts: [],updated:false}, action) => {
     switch (action.type) {

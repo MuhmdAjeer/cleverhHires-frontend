@@ -3,7 +3,7 @@ import { Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
-import { signup } from '../../actions/auth'
+import { signup } from '../../redux/actions/auth'
 
 
 // import * as yup from 'yup'

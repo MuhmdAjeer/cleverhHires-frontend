@@ -7,7 +7,7 @@ import Post from "./Post/Post"
 import { POSTS } from "../../constants/actionTypes";
 import { responsiveFontSizes, Skeleton } from "@mui/material";
 import { useDispatch , useSelector } from "react-redux";
-import { getAllPosts } from "../../actions/posts";
+import { getAllPosts } from "../../redux/actions/posts";
 
 function Feed() {
   // const [posts, setPosts] = useState([]);

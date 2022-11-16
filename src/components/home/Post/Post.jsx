@@ -4,7 +4,7 @@ import "./post.scss";
 import { MoreVert, ThumbUp, Comment, SendRounded, MoreHoriz, ThumbUpOffAltOutlined} from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPosts, likePost , addComment} from "../../../actions/posts";
+import { getAllPosts, likePost , addComment} from "../../../redux/actions/posts";
 
 export default function Post({ post }) {
   console.log(post);

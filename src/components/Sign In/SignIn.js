@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import { useDispatch } from 'react-redux'
-import { signin } from '../../actions/auth'
+import { signin } from '../../redux/actions/auth'
 
 
 

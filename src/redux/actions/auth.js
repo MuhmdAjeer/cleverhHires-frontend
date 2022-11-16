@@ -1,5 +1,5 @@
-import * as API from "../api/index";
-import { SIGNUP, SIGNIN, UPDATE_USER } from "../constants/actionTypes";
+import * as API from "../../api/index";
+import { SIGNUP, SIGNIN, UPDATE_USER } from "../../constants/actionTypes";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 

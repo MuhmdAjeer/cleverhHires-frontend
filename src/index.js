@@ -7,7 +7,7 @@ import thunk from 'redux-thunk'
 
 import './index.css';
 import App from './App';
-import reducers from './reducers/index.js'
+import reducers from './redux/reducers/index.js'
 
 const store  = createStore(reducers,composeWithDevTools(applyMiddleware(thunk)))
 

@@ -3,7 +3,7 @@ import Container from '../Container/Container'
 import { Button, TextField } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { verifyOtp } from '../../actions/auth'
+import { verifyOtp } from '../../redux/actions/auth'
 
 
 function Otp() {

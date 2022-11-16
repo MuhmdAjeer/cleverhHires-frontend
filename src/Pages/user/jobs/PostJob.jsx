@@ -8,7 +8,7 @@ import {useNavigate} from 'react-router-dom'
 import Navbar from "../../../components/NavBar/Navbar"
 import './PostJob.scss';
 import { useState } from 'react';
-import { postJob } from '../../../actions/jobs'
+import { postJob } from '../../../redux/actions/jobs'
 
 const PostJob = () => {
     const [step, setStep] = useState(1)

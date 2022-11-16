@@ -1,4 +1,4 @@
-import * as API from "../api/jobs";
+import * as API from "../../api/jobs";
 import { toast } from "react-hot-toast";
 
 

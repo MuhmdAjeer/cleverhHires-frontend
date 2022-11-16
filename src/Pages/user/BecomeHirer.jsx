@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { becomeHirer } from "../../actions/hire";
+import { becomeHirer } from "../../redux/actions/hire";
 
 import Navbar from "../../components/NavBar/Navbar";
 import "./becomeHirer.scss";

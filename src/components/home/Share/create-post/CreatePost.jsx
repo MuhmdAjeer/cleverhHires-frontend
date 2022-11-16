@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import EmojiPicker from "emoji-picker-react";
 
-import { getAllPosts, uploadPost } from "../../../../actions/posts";
+import { getAllPosts, uploadPost } from "../../../../redux/actions/posts";
 import "./createPost.scss";
 import axios from "axios";
 import toast from "react-hot-toast";
