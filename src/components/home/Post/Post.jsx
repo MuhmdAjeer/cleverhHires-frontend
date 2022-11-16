@@ -70,20 +70,16 @@ export default function Post({ post }) {
       <div className="comment_container">
         <div className="comment_input">
           <img  src="../avatar.jpeg" alt="" />
-          <textarea autoFocus value={comment} onChange={(event)=>setComment(event.target.value)}  placeholder="Enter a comment" type="text" />
+          <textarea  autoFocus value={comment} onChange={(event)=>setComment(event.target.value)}  placeholder="Enter a comment" type="text" />
           {
           comment.length > 0 &&
-          <SendRounded onClick={handleComment} className="sendIcon" />
+          <SendRounded  onClick={handleComment} className="sendIcon" />
           }
         </div>
         <hr />
         <div className="comments_box">
           {
             post.comments[0] && post.comments
-            .sort((a,b)=> {
-              console.log({a,b});
-              return b.commentedAt - a.commentedAt
-            })
             .map((comment)=>(
               <CommentCard comment={comment} />
             ))

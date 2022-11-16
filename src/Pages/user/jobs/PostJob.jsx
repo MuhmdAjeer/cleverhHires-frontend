@@ -23,10 +23,12 @@ const PostJob = () => {
         jobRole : '',
         location : "",
         workplace : "",
+        employmentType : "",
+
     }
 
     const initialValuesStep2 = {
-        employmentType : "",
+        vaccancies : '',
         minimumExperience: '', 
         maximumExperience:'', 
         minSalary : '',
@@ -38,10 +40,11 @@ const PostJob = () => {
         jobRole : yup.string().required('Required'),
         location : yup.string().required('Required'),
         workplace : yup.string().required('Required'),
+        employmentType  : yup.string().required('Required'),
     })
     
     const stepTwoValidation = new yup.ObjectSchema({
-        employmentType  : yup.string().required('Required'),
+        vaccancies : yup.number().required('Required').min(1),
         minimumExperience : yup.number().required('Required'),
         maximumExperience : yup.number().required('Required'),
         minSalary : yup.number().required('Required'),
@@ -110,6 +113,7 @@ const PostJob = () => {
                                             <Input  error={step1.errors.jobRole && step1.touched.jobRole} label='Job Role' value={step1.values.jobRole} onChange={step1.handleChange} name='jobRole' />
                                             <Input error={step1.errors.location && step1.touched.location} label='Location' value={step1.values.location} onChange={step1.handleChange}  name='location' />
                                             <Input onChange={step1.handleChange} value={step1.values.workplace} error={step1.errors.workplace && step1.touched.workplace} label='Workplace Type' name='workplace' />
+                                            <Input onChange={step1.handleChange} value={step1.values.employmentType} error={step1.errors.employmentType && step1.touched.employmentType} label='Employment Type' name='employmentType' />
                                             {/* <button onClick={step1.handleSubmit}> dd</button> */}
                                             <button className='next_btn'  onClick={step1.handleSubmit} >Next</button>
                                         </>
@@ -117,7 +121,7 @@ const PostJob = () => {
                                 case 2:
                                     return (
                                         <>
-                                            <Input onChange={step2.handleChange} value={step2.values.employmentType} error={step2.errors.employmentType && step2.touched.employmentType} label='Employment Type' name='employmentType' />
+                                            <Input onChange={step2.handleChange} value={step2.values.vaccancies} error={step2.errors.vaccancies && step2.touched.vaccancies} label='vaccancies'  fullnumber name='vaccancies' />
                                             <Input onChange={step2.handleChange} value={step2.values.minimumExperience} error={step2.errors.minimumExperience && step2.touched.minimumExperience} label='Min experience' number name='minimumExperience' />
                                             <Input onChange={step2.handleChange} value={step2.values.maximumExperience} error={step2.errors.maximumExperience && step2.touched.maximumExperience} label='Max experience' number name='maximumExperience' />
                                             <Input onChange={step2.handleChange} value={step2.values.minSalary} error={step2.errors.minSalary && step2.touched.minSalary} label='Min Salary' number name='minSalary' />
@@ -175,10 +179,16 @@ const PostJob = () => {
 
 
 
-const Input = ({ label, name, number , value,onChange ,error }) => {
+const Input = ({ label, name, number , value,onChange ,error ,fullnumber }) => {
     if (number) {
         return (
             <TextField error={error} onChange={onChange} value={value}  type={'number'} variant='filled' sx={{ marginBottom: "10px", width: "48.5%", marginRight: "5px" }} label={label} name={name} size='small' />
+        )
+    }
+
+    if(fullnumber){
+        return (
+            <TextField error={error} onChange={onChange} value={value}  type={'number'} variant='filled' sx={{ marginBottom: "10px"}} fullWidth label={label} name={name} size='small' />
         )
     }
 
