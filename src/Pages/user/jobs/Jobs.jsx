@@ -7,6 +7,9 @@ import JobCard from "../../../components/user/jobCard/JobCard"
 import Loader from '../../../components/Loader'
 import { getJobs } from "../../../redux/actions/jobs"
 import './Jobs.scss'
+import SkeletonElement from "../../../skeletons/SkeletonElement"
+import JobCardSkeleton from "../../../skeletons/JobCardSkeleton"
+import JobDetilsSkeleton from "../../../skeletons/JobDetilsSkeleton"
 
 
 
@@ -21,18 +24,36 @@ const Jobs = () => {
 
 
   useEffect(()=>{
-    dispatch(getJobs(setLoading,setJobs))
+    setTimeout(()=>{
+      dispatch(getJobs(setLoading,setJobs))
+
+    },35000)
     setSelectedJob(jobs[0])
     console.log(jobs[0]);
   },[])
 
 
   if(loading){
-    return <Loader/>
+    
+    return(
+      <>
+      <Navbar/>
+      <div className="jobs_container">
+        <div className="jobs_skeleton">
+  <JobCardSkeleton/>
+  <JobCardSkeleton/>
+  <JobCardSkeleton/>
+        </div>
+        <div className="job_details_skeleton">
+  <JobDetilsSkeleton/>
+        </div>
+      </div>
+      </>
+    )
   }
 
   return (
-   <Fragment>
+    <Fragment>
     <Navbar/>
     <div className="jobs_container">
         <div className="jobs">

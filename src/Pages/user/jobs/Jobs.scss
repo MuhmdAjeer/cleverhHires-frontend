@@ -12,7 +12,24 @@ $primary:#2274A5;
 
 }
 
+.card_continer_skeleton{
+    width: 80%;
+    display: flex;
+    margin: auto;
+    justify-content: flex-start;
+}
+
 .jobs{
+    width: 50%;
+    // height: 100vh;
+    // overflow-y: scroll;
+    
+    @media screen and (max-width: $medium) {
+        width: 100%;
+    }
+}
+
+.jobs_skeleton{
     width: 50%;
     // height: 100vh;
     // overflow-y: scroll;
@@ -26,6 +43,29 @@ $primary:#2274A5;
     background-color: white;
     box-shadow: 0 0 5px 5px #00000009;
     border : 1px solid #dfdfdf;
+    margin: 10px;
+    border-radius: 15px;
+    width: 50%;
+    
+    @media screen and (max-width: $medium) {
+        display: none;
+    }
+
+    .jd_container{
+        margin: 10px;
+    }
+
+    .jd_top{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+}
+
+.job_details_skeleton{
+    // background-color: white;
+    // box-shadow: 0 0 5px 5px #00000009;
+    // border : 1px solid #dfdfdf;
     margin: 10px;
     border-radius: 15px;
     width: 50%;

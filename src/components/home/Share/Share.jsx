@@ -1,12 +1,16 @@
 import { useState } from "react";
 import Modal from "../../modal/Modal";
 import { CreatePost } from "./create-post/CreatePost";
+import EmojiPicker from 'emoji-picker-react'
 import {
   Article,
   PermMedia,
   Send,
   VideoCameraFront,
 } from "@mui/icons-material";
+
+
+
 
 import "./share.scss";
 
@@ -55,6 +59,7 @@ const Share = () => {
               placeholder="whats in your mind?"
               type="text"
             />
+  
           </div>
           <hr className="share_hr" />
           <div className="share_bottom">
