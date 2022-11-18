@@ -24,8 +24,11 @@ const Jobs = () => {
 
 
   useEffect(() => {
-    dispatch(getJobs(setLoading, setJobs))
-    setSelectedJob(jobs[0])
+    // setLoading(true)
+    dispatch(getJobs(setLoading, setJobs,setSelectedJob))
+    // setSelectedJob(jobs[0])
+    setLoading(false)
+    console.log(selectedJob);
   }, [])
 
 
@@ -48,7 +51,9 @@ const Jobs = () => {
     )
   }
 
-  return (
+
+    return (
+      
     <Fragment>
       <Navbar />
       <div className="jobs_container">
@@ -80,7 +85,7 @@ const Jobs = () => {
 
               <div className="jd_details">
                 <span>Salary</span>
-                <span>${selectedJob?.minSalary} - ${selectedJob?.maxSalry} a year</span>
+                <span>${selectedJob?.minSalary} - ${selectedJob?.maxSalary} a year</span>
               </div>
 
 
@@ -99,7 +104,7 @@ const Jobs = () => {
                 {
                   selectedJob?.skills?.map((skill) => (
                     <div className="skill">{skill}</div>
-                  ))
+                    ))
                 }
 
               </div>
@@ -113,5 +118,6 @@ const Jobs = () => {
     </Fragment>
   )
 }
+
 
 export default Jobs

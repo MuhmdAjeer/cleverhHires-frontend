@@ -95,6 +95,9 @@ const PostJob = () => {
         const jobPostForm = {...step1.values,...step2.values,skills,description}
         dispatch(postJob(jobPostForm,navigate,setLoading))
     }
+
+    
+
     return (
         <>
             <Navbar />

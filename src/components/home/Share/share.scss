@@ -24,6 +24,7 @@ $primary: #2274A5;
 
     .share_input {
         margin: 0;
+        margin-right: 5px;
         border: none;
         border: 1px solid rgb(243, 243, 243);
         border-radius: 10px;
@@ -35,6 +36,13 @@ $primary: #2274A5;
         resize: none;
         &:focus {
             outline: none;
+        }
+    }
+
+    .emojiBtn{
+        cursor: pointer;
+        &:hover{
+            color: rgb(0, 100, 158);
         }
     }
 

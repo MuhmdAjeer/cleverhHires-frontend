@@ -4,10 +4,10 @@ import "./post.scss";
 import { MoreVert, ThumbUp, Comment, SendRounded, MoreHoriz, ThumbUpOffAltOutlined } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPosts, likePost, addComment } from "../../../redux/actions/posts";
-import { useRef } from "react";
-import Modal from 'react-modal'
-import { ListItemButton, Menu, MenuItem } from "@mui/material";
+import { likePost, addComment , deletePost} from "../../../redux/actions/posts";
+import swal from 'sweetalert2/dist/sweetalert2'
+
+import {  Menu, MenuItem } from "@mui/material";
 
 export default function Post({ post }) {
   console.log(post);
@@ -23,6 +23,7 @@ export default function Post({ post }) {
     dispatch(likePost(postId, setLiked))
   }
 
+  
   const handleComment = () => {
     dispatch(addComment(comment, post._id))
     setComment('')
@@ -42,13 +43,24 @@ export default function Post({ post }) {
     const user = JSON.parse(localStorage.getItem('user'))
 
     if (post.user._id === user?.user?._id) {
-      console.log('//////////////////////////');
       setOwnPost(true)
-      console.log({ ownPost });
     }
     setLiked(post?.likes?.includes(user?.user?._id))
   }, [post])
-
+  
+  const handleDelete = (postId) => {
+    handleClose()
+    swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deletePost(postId))
+      }
+    })
+  }
   return (
     <div className="post">
 
@@ -76,7 +88,7 @@ export default function Post({ post }) {
         }}
       >
         <MenuItem onClick={handleClose}>Edit</MenuItem>
-        <MenuItem onClick={handleClose}>Delete</MenuItem>
+        <MenuItem onClick={()=>handleDelete(post._id)}>Delete</MenuItem>
       </Menu>
 
           </div>

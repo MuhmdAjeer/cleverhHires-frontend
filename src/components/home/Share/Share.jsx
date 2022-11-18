@@ -2,8 +2,11 @@ import { useState } from "react";
 import Modal from "../../modal/Modal";
 import { CreatePost } from "./create-post/CreatePost";
 import EmojiPicker from 'emoji-picker-react'
+import InputEmoji from 'react-input-emoji'
 import {
   Article,
+  EmojiEmotionsOutlined,
+  EmojiEmotionsRounded,
   PermMedia,
   Send,
   VideoCameraFront,
@@ -32,6 +35,7 @@ const Share = () => {
   const [selectedImage, setImage] = useState(null);
   const [input, setInput] = useState("");
   const [share, setShare] = useState(false);
+  const [showEmoji,setShowEmoji] = useState(false)
   const handlePostImage = (event) => {
     const image = event.target.files[0];
     console.log(image);
@@ -39,12 +43,21 @@ const Share = () => {
     setImage(imgURL);
   };
 
+  const handleEmojiPicker = ()=>{
+    setShowEmoji(!showEmoji)
+  }
+
   const handleInput = (event) => {
     setInput(event.target.value);
     if (!input) {
       setShare(false);
     }
   };
+
+  const handleEmojiSelect = ({emoji})=>{
+    console.log(emoji);
+    setInput(input+emoji)
+  }
 
   return (
     <>
@@ -58,12 +71,31 @@ const Share = () => {
               onChange={handleInput}
               placeholder="whats in your mind?"
               type="text"
-            />
+              />
+                    {/* <InputEmoji
+          // value={text}
+          // onChange={setText}
+          cleanOnEnter
+          height={90}
+          // onEnter={handleOnEnter}
+          placeholder="Type a message"
+        /> */}
+
+        <EmojiEmotionsOutlined className="emojiBtn" onClick={handleEmojiPicker} htmlColor="grey"/>
+
   
           </div>
+
           <hr className="share_hr" />
           <div className="share_bottom">
             <div className="share_options">
+        {
+          showEmoji &&
+          <div style={{zIndex:'4',position:'absolute',marginLeft : "252px" }} >
+            <EmojiPicker  height={400} onEmojiClick={handleEmojiSelect} /> 
+          </div>
+
+        }
               <div className="share_option" onClick={() => setOpen(!isOpen)}>
                 <PermMedia htmlColor="#2274A5" className="share_icon" />
                 <span className="share_option_text">Photo</span>

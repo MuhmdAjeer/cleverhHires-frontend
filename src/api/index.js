@@ -20,21 +20,26 @@ export const verifyOtp = (formData) =>
 
 //POSTS
 export const uploadPost  = (formData) =>
-  API.post("/post", formData, {
+  API.post("/posts", formData, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 
 export const getAllPosts = () => API.get('/posts');
-
-export const likePost = (postId) => API.patch('/post/like',{postId},{
+export const deletePost = (postId) => API.delete(`/posts/${postId}`,{
   headers : {
     Authorization : `Bearer ${token}`
   }
 })
 
-export const addComment = (comment,postId) => API.post('/post/comment',{comment,postId},{
+export const likePost = (postId) => API.patch('/posts/like',{postId},{
+  headers : {
+    Authorization : `Bearer ${token}`
+  }
+})
+
+export const addComment = (comment,postId) => API.post('/posts/comment',{comment,postId},{
   headers : {
     Authorization : `Bearer ${token}`
   }

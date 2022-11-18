@@ -8,7 +8,7 @@ export const postJob = (formData, navigate,loading) => {
     API.postJob(formData)
       .then((response) => {
         loading(false);
-        navigate("/x");
+        navigate("/jobs");
         toast.success("Job has been published successfully");
       })
       .catch((err) => {
@@ -18,11 +18,11 @@ export const postJob = (formData, navigate,loading) => {
       });
 };
 
-export const getJobs = (loading,setJobs)=> async(dispatch) => {
+export const getJobs = (loading,setJobs,setJob)=> async(dispatch) => {
   loading(true)
   API.getJobs()
   .then((response)=>{
-    loading(false)
+    setJob(response?.data[0])
     setJobs(response.data)
   })
   .catch((err)=>{

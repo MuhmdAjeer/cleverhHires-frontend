@@ -13,6 +13,17 @@ export const getAllPosts = () => async (dispatch) =>{
         })
 }
 
+export const deletePost = (postId) => async(dispatch) =>{
+    API.deletePost(postId)
+    .then(response => {
+        dispatch({type:'UPDATE_POST'})
+        toast.success('Deleted successfully!')
+    })
+    .catch(err=>{
+        toast.error('Failed to delete the post!')
+    })
+}
+
 export const likePost = (postId,liked) => async(dispatch)=>{
         API.likePost(postId)
         .then((response)=>{

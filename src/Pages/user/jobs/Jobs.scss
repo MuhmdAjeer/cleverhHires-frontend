@@ -21,12 +21,16 @@ $primary:#2274A5;
 
 .jobs{
     width: 50%;
-    // height: 100vh;
-    // overflow-y: scroll;
+    height: 100vh;
+    overflow-y: scroll;
     
     @media screen and (max-width: $medium) {
         width: 100%;
     }
+}
+
+.jobs::-webkit-scrollbar{
+    display: none;
 }
 
 .jobs_skeleton{
@@ -46,7 +50,7 @@ $primary:#2274A5;
     margin: 10px;
     border-radius: 15px;
     width: 50%;
-    
+    height: fit-content;
     @media screen and (max-width: $medium) {
         display: none;
     }

@@ -13,11 +13,14 @@ export const RightBar = () => {
     <div className="card_container">
       <div className="card">
         <ul>
-          <li onClick={() => navigate("/become-hirer")}>
-            <span>Post Jobs</span>
+          <li onClick={() => navigate("/post-job")}>
+            <span>Post Job</span>
           </li>
-          <li onClick={() => navigate("/post-job")} >
+          <li onClick={() => navigate("/jobs")} >
             <span>Manage Job posts</span>
+          </li>
+          <li onClick={() => navigate("/become-hirer")} >
+            <span>Be a Hirer</span>
           </li>
         </ul>
       </div>

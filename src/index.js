@@ -5,7 +5,7 @@ import {legacy_createStore as createStore , compose , applyMiddleware} from 'red
 import { composeWithDevTools } from '@redux-devtools/extension';
 import thunk from 'redux-thunk'
 
-import './index.css';
+import './index.scss';
 import App from './App';
 import reducers from './redux/reducers/index.js'
 

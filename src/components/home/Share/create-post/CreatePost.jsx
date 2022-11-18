@@ -47,7 +47,7 @@ export const CreatePost = ({ close }) => {
     console.log(location);
     axios
       .post(
-        "http://localhost:5000/api/v1/user/post",
+        "http://localhost:5000/api/v1/user/posts",
         { image: file, description },
         {
           headers: {
