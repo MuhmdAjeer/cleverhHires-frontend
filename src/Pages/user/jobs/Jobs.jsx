@@ -14,6 +14,7 @@ import JobDetilsSkeleton from "../../../skeletons/JobDetilsSkeleton"
 
 
 
+
 const Jobs = () => {
 
   const dispatch = useDispatch()
@@ -106,7 +107,6 @@ const Jobs = () => {
                     <div className="skill">{skill}</div>
                     ))
                 }
-
               </div>
               <hr />
               <h4>Job Description</h4>

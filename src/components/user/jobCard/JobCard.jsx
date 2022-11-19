@@ -1,9 +1,32 @@
 import { Work, Laptop, Money , Bookmark} from '@mui/icons-material'
+// import { Modal } from '@mui/material'
 import moment from 'moment'
+import { useState } from 'react'
+// import Modal from '@mui/material/Modal/Modal'
+import Modal from '../../modal/Modal'
 
 import './JobCard.scss'
+// import JobApplication from '../../job/apply/JobApplication'
+import JobApplication from '../../Jobapplication/JobApplication'
+
+
+const MODAL_STYLE = {
+  position: "fixed",
+  display: "flex",
+  width: "40%",
+  top: "50%",
+  borderRadius: "10px",
+  left: "50%",
+  transform: "translate(-50%,-50%)",
+  backgroundColor: "#fff",
+  padding: "20px",
+  zIndex: 1000,
+};
 
 const JobCard = ({job,setJob}) => {
+
+  const [openModal,setOpenModal] = useState(false)
+
   return (
     <>
       <div  tabIndex={1} onClick={()=>setJob(job)} className='job_card'>
@@ -36,13 +59,18 @@ const JobCard = ({job,setJob}) => {
             </div>
           </div>
           <div className="right">
-            <button>Apply</button>
+            <button onClick={()=>setOpenModal(!openModal)} >Apply</button>
+      <Modal open={openModal} containerStyle={MODAL_STYLE} >
+        <JobApplication/>
+      </Modal>
             <div>
               <Bookmark/>
             </div>
           </div>
         </div>
+        
       </div>
+
     </>
   )
 }

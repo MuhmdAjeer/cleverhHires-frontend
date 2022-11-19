@@ -7,7 +7,7 @@ const OVERLAY_STYLE = {
     bottom : 0,
     left : 0 ,
     right : 0,
-    backgroundColor : 'rgba(0,0,0,.7)',
+    backgroundColor : '#00000052',
     zIndex : 1000
 }
 
