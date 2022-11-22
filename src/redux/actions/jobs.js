@@ -31,3 +31,17 @@ export const getJobs = (loading,setJobs,setJob)=> async(dispatch) => {
     toast.error(error)
   })
 }
+
+export const applyJob = (jobId,formData) => async(dispatch) =>{
+  toast.success('Applied succesfully!')
+  console.log('dd');
+  console.log(formData);
+  API.applyJob(jobId,formData)
+  .then((response)=>{
+  })
+  .catch((err)=>{
+    const error = err.response.data.message;
+    toast.error(error)
+  })
+}
+

@@ -7,7 +7,7 @@
 
         // justify-content: flex-start;
         // width: 100%;
-        div{
+        .form_div{
             display: flex;
             flex-direction: column;
             margin-top: 5px;
@@ -89,6 +89,9 @@
 
     display: flex;
     cursor: pointer;
+    // width: 100px;
+    // flex-direction: column;
+    // width: max-content;
 
     .pdf_red{
     background-color: rgb(221, 0, 0);

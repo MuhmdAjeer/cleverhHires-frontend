@@ -61,7 +61,7 @@ const JobCard = ({job,setJob}) => {
           <div className="right">
             <button onClick={()=>setOpenModal(!openModal)} >Apply</button>
       <Modal open={openModal} containerStyle={MODAL_STYLE} >
-        <JobApplication/>
+        <JobApplication job={job} />
       </Modal>
             <div>
               <Bookmark/>
