@@ -11,6 +11,7 @@ import './jobApplication.scss'
 import ResumeViewer from '../Resume/ResumeViewer'
 import { applyJob } from '../../redux/actions/jobs'
 import { handleUpload } from '../../s3'
+import { useEffect } from 'react'
 
 const stepOne = {
   initialValues: {
@@ -40,11 +41,12 @@ const stepTwo = {
 
 
 
-const JobApplication = ({ job }) => {
+const JobApplication = ({ job,closeModal }) => {
 
   const [step, setStep] = useState(0)
   const [resume, setResume] = useState('')
   const [viewResume, setResumeView] = useState('')
+
   const dispatch = useDispatch()
 
   const formikOne = useFormik({
@@ -54,6 +56,8 @@ const JobApplication = ({ job }) => {
       setStep(step + 1)
     }
   })
+
+
 
   const formikTwo = useFormik({
     initialValues: stepTwo.initialValues,
@@ -66,7 +70,7 @@ const JobApplication = ({ job }) => {
     handleUpload(resume).then((response)=>{
       const pdfUrl = response.location;
       const formData = {...formikOne.values,...formikTwo.values,pdfUrl}
-      dispatch(applyJob(job._id,formData))
+      dispatch(applyJob(job._id,formData,closeModal))
     })
   }
 
@@ -76,9 +80,6 @@ const JobApplication = ({ job }) => {
   const handleResume = (event) => {
     const pdfFile = event.target.files[0];
     setResume(pdfFile)
-    // handleUpload(pdfFile).then((response)=>{
-    //   console.log(response);
-    // })
   }
 
   const RemoveResume = () => {
@@ -91,16 +92,13 @@ const JobApplication = ({ job }) => {
     Swal(<ResumeViewer resume={viewResume} />)
   }
 
-  // const ApplicationForm = ({ step }) => {
-
-  // }
 
   return (
     <div style={{ width: "100%" }} >
 
       <div className="modal_top">
         <span className="modal_header">Apply to Google</span>
-        <Cancel className="cancel_icon" />
+        <Cancel onClick={closeModal} className="cancel_icon" />
       </div>
       <div className="appliction_center"  >
         <ProgressBar animateOnRender isLabelVisible={false} bgColor='#0a66c2' height='5px' className="progressBar" completed={step * 40} />

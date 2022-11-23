@@ -1,12 +1,9 @@
-import { Work, Laptop, Money , Bookmark} from '@mui/icons-material'
-// import { Modal } from '@mui/material'
+import { Work, Laptop, Money , Bookmark, AirplaneTicket, Check, CheckCircle} from '@mui/icons-material'
 import moment from 'moment'
-import { useState } from 'react'
-// import Modal from '@mui/material/Modal/Modal'
+import { useEffect, useState } from 'react'
 import Modal from '../../modal/Modal'
 
 import './JobCard.scss'
-// import JobApplication from '../../job/apply/JobApplication'
 import JobApplication from '../../Jobapplication/JobApplication'
 
 
@@ -26,6 +23,16 @@ const MODAL_STYLE = {
 const JobCard = ({job,setJob}) => {
 
   const [openModal,setOpenModal] = useState(false)
+  const [applied,setApplied] = useState(false)
+
+
+  useEffect(()=>{
+    console.log(job.applications);
+    const user = JSON.parse(localStorage.getItem('user'))
+    if( job && job.applications.some((application)=> application.seeker === user?.user?._id)){
+      setApplied(true)
+    }
+  },[job])
 
   return (
     <>
@@ -59,9 +66,19 @@ const JobCard = ({job,setJob}) => {
             </div>
           </div>
           <div className="right">
-            <button onClick={()=>setOpenModal(!openModal)} >Apply</button>
-      <Modal open={openModal} containerStyle={MODAL_STYLE} >
-        <JobApplication job={job} />
+            {
+              applied ? 
+              <>
+              <CheckCircle color='primary' textAnchor='Already Applied' />
+              <span style={{marginRight:'5px'}} >Applied</span>
+              </>
+            // <button onClick={()=>setOpenModal(!openModal)} >UnApply</button>
+              :
+              <button onClick={()=>setOpenModal(!openModal)} >Apply</button>
+
+            }
+      <Modal open={openModal}  containerStyle={MODAL_STYLE} >
+        <JobApplication closeModal={()=> setOpenModal(false)} job={job} />
       </Modal>
             <div>
               <Bookmark/>

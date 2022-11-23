@@ -18,12 +18,13 @@ export const postJob = (formData, navigate,loading) => {
       });
 };
 
-export const getJobs = (loading,setJobs,setJob)=> async(dispatch) => {
+export const getJobs = (loading,setJob)=> async(dispatch) => {
   loading(true)
   API.getJobs()
   .then((response)=>{
+    dispatch({type:'ALL_JOBS',payload:response.data})
     setJob(response?.data[0])
-    setJobs(response.data)
+    // setJobs(response.data)
   })
   .catch((err)=>{
     loading(false)
@@ -32,12 +33,12 @@ export const getJobs = (loading,setJobs,setJob)=> async(dispatch) => {
   })
 }
 
-export const applyJob = (jobId,formData) => async(dispatch) =>{
-  toast.success('Applied succesfully!')
-  console.log('dd');
-  console.log(formData);
+export const applyJob = (jobId,formData,closeModal) => async(dispatch) =>{
   API.applyJob(jobId,formData)
   .then((response)=>{
+    dispatch({type : 'REFRESH'})
+    toast.success('Applied succesfully!')
+    closeModal()
   })
   .catch((err)=>{
     const error = err.response.data.message;

@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 import Navbar from "../../../components/NavBar/Navbar"
@@ -19,18 +19,25 @@ const Jobs = () => {
 
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
-  const [jobs, setJobs] = useState([])
+  // const [jobs, setJobs] = useState([])
   const [selectedJob, setSelectedJob] = useState({})
+
+  const refresh = useSelector((state)=>state.posts.refresh)
+  const jobs = useSelector((state)=>state.jobs.jobs)
+
+
 
 
 
   useEffect(() => {
-    // setLoading(true)
-    dispatch(getJobs(setLoading, setJobs,setSelectedJob))
-    // setSelectedJob(jobs[0])
+    dispatch(getJobs(setLoading,setSelectedJob))
+    console.log('/////running useeffect');
+    console.log({jobs});
     setLoading(false)
     console.log(selectedJob);
-  }, [])
+  }, [refresh])
+
+
 
 
   if (loading) {
@@ -60,8 +67,8 @@ const Jobs = () => {
       <div className="jobs_container">
         <div className="jobs">
           {
-            jobs.map((job) => (
-              <JobCard setJob={setSelectedJob} job={job} />
+            jobs && jobs.map((job) => (
+              <JobCard key={job._id} setJob={setSelectedJob} job={job} />
             ))
           }
         </div>
