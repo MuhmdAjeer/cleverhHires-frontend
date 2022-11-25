@@ -18,7 +18,28 @@ export const verifyOtp = (formData) =>
     },
   });
 
+export const getAllUsers = () => API.get('/',{
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
+
+export const followUser = (userId) => API.put(`/follow/${userId}`,{},{
+  headers : {
+    Authorization: `Bearer ${token}`,
+  }
+}) 
+
+export const unfollowUser = (userId) => API.put(`/unfollow/${userId}`,{},{
+  headers : {
+    Authorization: `Bearer ${token}`,
+  }
+}) 
+
+
 //POSTS
+
+
 export const uploadPost  = (formData) =>
   API.post("/posts", formData, {
     headers: {
@@ -26,7 +47,11 @@ export const uploadPost  = (formData) =>
     },
   });
 
-export const getAllPosts = () => API.get('/posts');
+export const getAllPosts = () => API.get('/posts',{
+  headers : {
+    Authorization : `Bearer ${token}`
+  }
+});
 export const deletePost = (postId) => API.delete(`/posts/${postId}`,{
   headers : {
     Authorization : `Bearer ${token}`

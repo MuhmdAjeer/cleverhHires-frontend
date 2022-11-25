@@ -1,0 +1,57 @@
+$small: 500px;
+$medium: 900px;
+$primary:#2274A5;
+
+.user_card{
+    height: fit-content;
+    margin: 0;
+    // width: 250px;
+}
+
+.user_card_container {
+    margin: 5px;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 19px -10px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 19px -10px rgba(0, 0, 0, 0.22);
+    box-shadow: 0px 0px 19px -10px rgba(0, 0, 0, 0.22);
+    border-radius: 10px;
+
+    span{
+        color: grey;
+        margin-bottom: 10px;
+    }
+    
+}
+.user_card_img{
+    width: 95px;
+    height: 95px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+
+.user_card_container * {
+    margin: 0;
+}
+
+.connect_btn{
+    background-color: white;
+    border: 2px solid $primary;
+    outline: none;
+    padding: 5px 15px;
+    border-radius: 30px;
+    color: $primary;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #d2dee6;
+        // color: white;
+    }
+}

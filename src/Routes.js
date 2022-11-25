@@ -9,6 +9,8 @@ import BecomeHirer from './Pages/user/BecomeHirer';
 import Protected from './Protected';
 import PostJob from './Pages/user/jobs/PostJob';
 import Jobs from './Pages/user/jobs/Jobs';
+import Connections from './Pages/user/connections/Connections';
+import Profile from './Pages/user/profile/Profile';
 
 
 
@@ -35,6 +37,9 @@ function Routes() {
       <Route path='/become-hirer' element={user ? <BecomeHirer/> : <Navigate to='/signin' />} />
       <Route  path='/post-job' element={<PostJob/>} /> 
       <Route  path='/jobs' element={<Jobs/>} /> 
+      <Route  path='/connections' element={<Connections/>} /> 
+      <Route  path='/profile' element={<Profile/>} /> 
+
       
       <Route path='*' element={<h1>not found</h1>} />
     </Switch>

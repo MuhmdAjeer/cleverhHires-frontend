@@ -1,0 +1,48 @@
+.profile_container{
+    background-color: white;
+    width: 70%;
+    height: 100vh;
+    border-radius: 10px;
+    margin: 0 5%;
+
+    border: 0.5px solid rgb(219, 219, 219);
+    // margin: 10px;
+    // padding: 10px;
+    -webkit-box-shadow: 0px 0px 19px -10px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 19px -10px rgba(0, 0, 0, 0.22);
+    box-shadow: 0px 0px 19px -10px rgba(0, 0, 0, 0.22);
+    // border-radius: 10px;
+    // color: gray;
+    // position: relative;
+}
+
+.wallpaper{
+    position: relative;
+    border-radius: 10px 10px 0 0;
+    top: 0;
+    left: 0;
+
+    // background-color: rgb(197, 197, 197);
+    background-image: url('https://www.spinutech.com/webres/Image/web-design-development/articles/Web%20Dev-Blog.png');
+    background-size: cover;
+    height: 200px;
+    width: 100%;
+}
+
+.profile_image{
+    position: absolute;
+    z-index: 3;
+    position: absolute;
+    top:25%;
+    // right: 5%;
+    margin-left: 25px;
+    // bottom:5%;
+    // right: 10%;
+    img{
+
+        width: 175px;
+        height: 175px;
+        border-radius: 50%;
+        border: 5px solid white;
+    }
+}

@@ -10,8 +10,8 @@ export const RightBar = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="card_container">
-      <div className="card">
+    <div className="rightbar_card_container">
+      <div className="right_bar_card">
         <ul>
           <li onClick={() => navigate("/post-job")}>
             <span>Post Job</span>

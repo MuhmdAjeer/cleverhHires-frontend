@@ -2,8 +2,9 @@ $small: 500px;
 $medium: 900px;
 $primary:#2274A5;
 
-.card_container {
-    flex: 3;
+.profile_card_container {
+    // flex: 3;
+    width : 30%;
     height: 100vh;
     @media screen and (max-width: $small) {
         flex: 12;
@@ -53,6 +54,7 @@ $primary:#2274A5;
                 margin-bottom: 5px;
                 border-radius: 5px;
                 background-color: rgb(235, 235, 235);
+                cursor: pointer;
 
                 span{
                     margin-left: 10px;

@@ -24,6 +24,7 @@ export const getJobs = (loading,setJob)=> async(dispatch) => {
   .then((response)=>{
     dispatch({type:'ALL_JOBS',payload:response.data})
     setJob(response?.data[0])
+    loading(false)
     // setJobs(response.data)
   })
   .catch((err)=>{

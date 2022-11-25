@@ -11,18 +11,19 @@ const ProfileCard = () => {
   const { token } = JSON.parse(localStorage.getItem('user'))
      const userData = jwtDecode(token)
      setUser(userData)
+     console.log(user,'///');
   },[])
  
 
   return (
-    <div className='card_container'>
+    <div className='profile_card_container'>
       <div className="card">
         <div className="profile">
           <img className='image' src="./avatar.jpeg" alt="" />
           <h2  >{user?.name}</h2>
         </div>
         <ul>
-          <li>
+          <li onClick={()=> navigate('/')} >
             <RssFeed />
             <span>Posts</span>
           </li>
@@ -30,7 +31,7 @@ const ProfileCard = () => {
             <Work />
             <span>Jobs</span>
           </li>
-          <li>
+          <li onClick={()=> navigate('/connections')} >
             <People/>
             <span>Connections</span>
           </li>
