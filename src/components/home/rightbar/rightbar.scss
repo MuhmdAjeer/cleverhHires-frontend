@@ -3,7 +3,7 @@ $medium: 900px;
 $primary:#2274A5;
 
 .right_bar{
-    flex: 3.5;
+    // flex: 3.5;
     @media screen and (max-width: $small){
         flex: 12;
         display: none;
@@ -11,9 +11,9 @@ $primary:#2274A5;
 }
 
 .rightbar_card_container{
-    // width : 35%;
-    flex: 3.5;
-    height: 100vh;
+    width : 30%;
+    // flex: 3.5;
+    // height: 100vh;
     @media screen and (max-width: $small) {
         flex: 12;
         display: none;
