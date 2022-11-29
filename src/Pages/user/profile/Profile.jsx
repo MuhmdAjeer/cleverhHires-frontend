@@ -5,6 +5,7 @@ import { RightBar } from '../../../components/home/rightbar/RightBar'
 import Navbar from "../../../components/NavBar/Navbar";
 import { Cancel, Edit } from "@mui/icons-material";
 import Modal from '../../../components/modal/Modal'
+import AddExperience from '../../../components/user/Experience/AddExperience'
 
 const MODAL_STYLE = {
   position: "fixed",
@@ -92,7 +93,10 @@ export default function Profile() {
           <div className="profile_meta_card">
             <div className="pro_meta_top">
               <h3>Experience</h3>
-              <Edit  htmlColor="grey" />
+              <Edit onClick={()=>setOpenExperience(true)}  htmlColor="grey" />
+              <Modal containerStyle={MODAL_STYLE} open={openEditExperience}  >
+                <AddExperience modalHandler={setOpenExperience} />
+              </Modal>
               
 
             </div>
