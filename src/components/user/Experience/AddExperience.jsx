@@ -1,8 +1,9 @@
 import { Cancel } from "@mui/icons-material";
-import { Checkbox, FormControlLabel, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { Checkbox, FormControlLabel, InputLabel, Menu, MenuItem, Select, TextField } from "@mui/material";
 import { useState } from "react";
+import { MONTHS,YEARS } from "../../../constants/date";
 
-import './addExp.scss'
+import './addExp.scss';
 
 export default function AddExperience({ modalHandler }) {
     const [currentRole, setCurrentRole] = useState(false);
@@ -40,23 +41,25 @@ export default function AddExperience({ modalHandler }) {
                     <span>Start Date</span>
                     <div>
                         <Select sx={{ width: '45%', marginRight: '10px' }} labelId="demo-simple-select-label" size="small" >
-                            <MenuItem>Full-Time</MenuItem>
+                        {MONTHS.map((month) => <MenuItem>{month}</MenuItem>)}
+
                         </Select>
                         <Select sx={{ width: '45%' }} labelId="demo-simple-select-label" size="small"  >
-                            <MenuItem>Full-Time</MenuItem>
+                        { YEARS &&  YEARS.map((year)=> <MenuItem>{year}</MenuItem>)}
+
                         </Select>
                     </div>
 
-                            <span>End Date</span>
-                            <div>
-                                <Select disabled={!currentRole} sx={{ width: '45%', marginRight: '10px' }} labelId="demo-simple-select-label" size="small" >
-                                    <MenuItem>Full-Time</MenuItem>
-                                </Select>
-                                <Select disabled={!currentRole}  sx={{ width: '45%' }} labelId="demo-simple-select-label" size="small"  >
-                                    <MenuItem>Full-Time</MenuItem>
-                                </Select>
-                            </div>
-        
+                    <span>End Date</span>
+                    <div>
+                        <Select maxRows={5} disabled={!currentRole} sx={{ width: '45%', marginRight: '10px' }} labelId="demo-simple-select-label" size="small" >
+                            {MONTHS.map((month) => <MenuItem>{month}</MenuItem>)}
+                        </Select>
+                        <Select disabled={!currentRole} sx={{ width: '45%' }} labelId="demo-simple-select-label" size="small"  >
+                            { YEARS &&  YEARS.map((year)=> <MenuItem>{year}</MenuItem>)}
+                        </Select>
+                    </div>
+
 
                     {/* <span>Start Date</span> */}
 
