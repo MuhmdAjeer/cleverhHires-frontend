@@ -36,7 +36,7 @@ export default function AddExperience({ modalHandler }) {
             currentRole
         }
 
-        dispatch(addExperience())
+        dispatch(addExperience(experience))
         
     }
     return (

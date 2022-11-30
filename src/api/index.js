@@ -70,7 +70,7 @@ export const addComment = (comment,postId) => API.post('/posts/comment',{comment
   }
 })
 
-export const addExperience = (experience)=> API.post('/profile/experience',{experience},{
+export const addExperience = (experience)=> API.post('/profile/experience',experience,{
   headers : {
     Authorization : `Bearer ${token}`
   }
