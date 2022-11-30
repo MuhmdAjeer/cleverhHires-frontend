@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./Profile.scss";
 import { RightBar } from '../../../components/home/rightbar/RightBar'
 import Navbar from "../../../components/NavBar/Navbar";
-import { Cancel, Edit } from "@mui/icons-material";
+import { Add, Cancel, Edit, PlusOne } from "@mui/icons-material";
 import Modal from '../../../components/modal/Modal'
 import AddExperience from '../../../components/user/Experience/AddExperience'
+import { useDispatch , useSelector} from "react-redux";
+import { editAbout, getProfile } from "../../../redux/actions/users";
+import {useParams,useNavigate} from 'react-router-dom';
+import moment from "moment";
+import Loader from "../../../components/Loader";
 
 const MODAL_STYLE = {
   position: "fixed",
@@ -25,6 +30,37 @@ export default function Profile() {
 
   const [openEditAbout,setOpenAbout] = useState(false)
   const [openEditExperience,setOpenExperience] = useState(false)
+  const [ownProfile,setOwnProfile] = useState(false)
+  const profile = useSelector((state)=> state.user.profile)
+  const navigate = useNavigate()
+  const [about,setAbout] = useState(profile?.about)
+  const {username} = useParams()
+  const [loading,setLoading] = useState(true)
+  
+
+
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch(getProfile(username,navigate,setLoading))
+    const user = JSON.parse(localStorage.getItem('user'))
+
+    if(profile?._id === user?.user?._id){
+      setOwnProfile(true)
+    }
+    console.log(profile);
+  },[])
+
+  const handleAboutEdit = ()=>{
+    console.log(about);
+    dispatch(editAbout(about))
+  }
+
+  if(loading){
+    return (
+      <Loader/>
+    )
+  }
 
   return (
     <>
@@ -45,14 +81,14 @@ export default function Profile() {
                 />
                 <img
                   className="profileUserImg"
-                  src="./avatar.jpeg"
+                  src={profile?.profileImage ? profile?.profileImage : '../avatarIcon.jpg'}
                   alt=""
                 />
               </div>
               <div className="profileInfo">
-                <h4 className="profileInfoName">Muhammed Ajeer</h4>
+                <h4 className="profileInfoName">{`${profile?.firstName} ${profile?.lastName}`}</h4>
                 <span className="profileInfoDesc">Full Stack developer</span>
-                <span className="follow_meta" >5 Followers | 9 Following</span>
+                <span className="follow_meta" >{profile?.followers?.length} Followers | {profile?.following?.length} Following</span>
               </div>
             </div>
             <div className="profileRightBottom">
@@ -63,7 +99,12 @@ export default function Profile() {
           <div className="profile_meta_card">
             <div className="pro_meta_top">
               <h3>About</h3>
-              <Edit onClick={()=>setOpenAbout(true)} htmlColor="grey" />
+              {
+                ownProfile ? 
+                <Edit onClick={()=>setOpenAbout(true)} htmlColor="grey" />
+                :
+                null
+              }
               <Modal containerStyle={MODAL_STYLE} open={openEditAbout}  >
                 <div className="create_post_modal">
                   <div className="modal_top">
@@ -74,13 +115,13 @@ export default function Profile() {
                     <div className="edit_about_container">
                       <span>You can write about your years of experience, industry, or skills. People also talk about their achievements or previous job experiences.</span>
                       <div>
-                      <textarea required className='job_description' name="description" id="" cols="63" rows="15"></textarea>
+                      <textarea required value={about} onChange={(e)=> setAbout(e.target.value)} className='job_description' name="description" id="" cols="63" rows="15"/>
                       </div>
                     </div>
                   </div>
                   <div className="modal_bottom">
                     <div className="modal_actions">
-                      <button className="btn_done">
+                      <button onClick={handleAboutEdit} className="btn_done">
                         Save
                       </button>
                     </div>
@@ -88,35 +129,49 @@ export default function Profile() {
                 </div>
               </Modal>
             </div>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, ipsa illo. Vitae harum esse eligendi dolor quae, aut inventore quod nemo saepe molestiae accusantium exercitationem quas rem aliquam quos similique natus id quia perferendis aliquid voluptatibus totam ipsa fuga aperiam?</span>
+            <span>{profile?.about}</span>
           </div>
           <div className="profile_meta_card">
             <div className="pro_meta_top">
               <h3>Experience</h3>
-              <Edit onClick={()=>setOpenExperience(true)}  htmlColor="grey" />
+              {
+                ownProfile ? 
+                <Add onClick={()=>setOpenExperience(true)}  htmlColor="grey" />
+                : 
+                null
+              }
               <Modal containerStyle={MODAL_STYLE} open={openEditExperience}  >
                 <AddExperience modalHandler={setOpenExperience} />
               </Modal>
               
 
             </div>
+            {
+              profile && profile.experiences.map((experience)=>(
+                <ExperienceCard  experience={experience} />
+              ))
+            }
+            {/* <ExperienceCard />
             <ExperienceCard />
-            <ExperienceCard />
-            <ExperienceCard />
-            <ExperienceCard />
+            <ExperienceCard /> */}
 
           </div>
 
           <div className="profile_meta_card">
             <div className="pro_meta_top">
               <h3>Skills</h3>
-              <Edit htmlColor="grey" />
+              {
+                ownProfile ? 
+                <Edit htmlColor="grey" />
+                : 
+                null
+              }
             </div>
             <div className="skills">
 
               <div className="skill">Nodejs</div>
               <div className="skill">MongoDB</div>
-              <div className="skill">React</div>
+              <div className="skill">{username}</div>
             </div>
 
           </div>
@@ -128,15 +183,19 @@ export default function Profile() {
   );
 }
 
-function ExperienceCard() {
+function ExperienceCard({experience}) {
   return (
     <div className="exp-card" >
-      <img src="./google.png" alt="" />
+      <img src="../google.png" alt="" />
       <div className="exp-meta">
-        <h4>Backend Developer</h4>
-        <h5>Google</h5>
-        <span>Jun 2022 - Present · 6 mos</span>
-        <span>Banglore,India</span>
+        <h4>{experience.title}</h4>
+        <h5>{experience.companyName}</h5>
+        {experience.currentRole ? 
+        <span> {`${experience.startMonth} ${experience.startYear}`} - Present · {moment(`${experience.startYear} ${experience.startMonth}`).fromNow(true)}</span>
+        :
+        <span> {`${experience.startMonth} ${experience.startYear}`} - {`${experience.endMonth} ${experience.endYear}`} · {moment(`${experience.startYear} ${experience.startMonth}`).from(`${experience.endYear} ${experience.endMonth}`,true)}</span>
+      }
+        <span>{experience.location}</span>
       </div>
     </div>
   )

@@ -29,6 +29,7 @@
     "pdfjs-dist": "^3.0.279",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-easy-crop": "^4.6.2",
     "react-hot-toast": "^2.4.0",
     "react-input-emoji": "^4.3.0",
     "react-modal": "^3.16.1",

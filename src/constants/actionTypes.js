@@ -2,5 +2,6 @@ module.exports = {
   SIGNIN: "SIGNIN",
   SIGNUP: "SIGNUP",
   UPDATE_USER: "UPDATE_USER",
-  ALL_USERS : 'ALL_USERS'
+  ALL_USERS : 'ALL_USERS',
+  PROFILE : 'PROFILE'
 };

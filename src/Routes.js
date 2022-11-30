@@ -38,7 +38,7 @@ function Routes() {
       <Route  path='/post-job' element={<PostJob/>} /> 
       <Route  path='/jobs' element={<Jobs/>} /> 
       <Route  path='/connections' element={<Connections/>} /> 
-      <Route  path='/profile' element={<Profile/>} /> 
+      <Route  path='/profile/:username' element={<Profile/>} /> 
 
       
       <Route path='*' element={<h1>not found</h1>} />

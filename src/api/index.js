@@ -76,3 +76,15 @@ export const addExperience = (experience)=> API.post('/profile/experience',exper
   }
 })
 
+export const getProfile = (username)=> API.get(`/profile/${username}`,{
+  headers : {
+    Authorization : `Bearer ${token}`
+  }
+})
+
+export const editAbout = (about)=> API.put('/profile/about',{about},{
+  headers : {
+    Authorization : `Bearer ${token}`
+  }
+}) 
+
