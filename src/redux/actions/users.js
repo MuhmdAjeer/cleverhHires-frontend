@@ -31,10 +31,18 @@ export const unfollowUser = (userId) => async(dispatch) => {
     API.unfollowUser(userId)
     .then((response)=>{
     dispatch({type : 'REFRESH'})
-
-        // alert(response)
     })
     .catch((err)=>{
         toast.error('Unfollwoing failed')
+    })
+}
+
+export const addExperience = (experience) => async(dispatch)=>{
+    API.addExperience(experience)
+    .then((response)=>{
+        dispatch({type : 'REFRESH'})
+    })
+    .catch((err)=>{
+        toast.error('Cant add experience! Try again')
     })
 }
