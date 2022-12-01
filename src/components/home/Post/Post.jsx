@@ -8,6 +8,7 @@ import { likePost, addComment , deletePost} from "../../../redux/actions/posts";
 import swal from 'sweetalert2/dist/sweetalert2'
 
 import {  Menu, MenuItem } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function Post({ post }) {
   console.log(post);
@@ -17,6 +18,7 @@ export default function Post({ post }) {
   const dispatch = useDispatch()
   const updated = useSelector((state) => state.posts.updated)
   const [ownPost, setOwnPost] = useState(false)
+  const navigate = useNavigate()
 
 
   const handleLike = (postId) => {
@@ -66,7 +68,7 @@ export default function Post({ post }) {
 
       <div className="post_wrapper">
         <div className="post_top">
-          <div className="post_top_left">
+          <div onClick={()=> navigate(`profile/${post?.user?.username}`)} className="post_top_left">
             <img className="post_profile_img" src={`${post.user?.profileImg ? post.user?.profileImg : '../avatarIcon.jpg'}`} alt="" />
             <div>
 
