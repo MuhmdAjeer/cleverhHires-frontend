@@ -43,7 +43,7 @@ function Routes() {
       <Route  path='/connections' element={<Connections/>} /> 
       <Route  path='/profile/:username' element={<Profile/>} /> 
       <Route  path='/posted-jobs' element={<PostedJobs/>} /> 
-      <Route  path='/applications/:id' element={<UserJobApplication/>} /> 
+      <Route  path='posted-jobs/:id' element={<UserJobApplication/>} /> 
 
 
 

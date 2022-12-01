@@ -40,3 +40,15 @@ export const applyJob = (jobId,formData) => API.post(`/${jobId}/apply`,formData,
     Authorization : `Bearer ${token}`
   }
 })
+
+export const getUserJobs = ()=> API.get(`my-jobs`,{
+  headers : {
+    Authorization : `Bearer ${token}`
+  }
+})
+
+export const getJob = (jobId) => API.get(`${jobId}`,{
+  headers: {
+    Authorization : `Bearer ${token}`
+  }
+})

@@ -47,3 +47,24 @@ export const applyJob = (jobId,formData,closeModal) => async(dispatch) =>{
   })
 }
 
+export const getUserJobs = ()=> async(dispatch) => {
+  API.getUserJobs()
+  .then((response)=>{
+    dispatch({type : 'MY_JOBS',payload : response.data})
+  })
+  .catch((err)=>{
+    toast.error('Failed to load jobs')
+  })
+}
+
+export const getJob = (jobId)=> async(dispatch) => {
+  API.getJob(jobId)
+  .then((response)=>{
+    console.log(response.data);
+    dispatch({type : 'JOB',payload : response.data})
+  })
+  .catch((err)=>{
+    toast.error('Failed to load applications')
+  })
+}
+
