@@ -19,7 +19,7 @@ const ProfileCard = () => {
     <div className='profile_card_container'>
       <div className="card">
         <div className="profile">
-          <img className='image' src="./avatar.jpeg" alt="" />
+          <img className='image' src='../avatar.jpeg' alt="" />
           <h2  >{user?.name}</h2>
         </div>
         <ul>

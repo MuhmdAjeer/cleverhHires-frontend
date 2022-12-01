@@ -11,6 +11,9 @@ import PostJob from './Pages/user/jobs/PostJob';
 import Jobs from './Pages/user/jobs/Jobs';
 import Connections from './Pages/user/connections/Connections';
 import Profile from './Pages/user/profile/Profile';
+import PostedJobs from './Pages/user/jobs/posted-jobs/PostedJobs';
+import UserJobApplication from './Pages/user/jobs/userapplications/UserJobApplication';
+
 
 
 
@@ -39,6 +42,10 @@ function Routes() {
       <Route  path='/jobs' element={<Jobs/>} /> 
       <Route  path='/connections' element={<Connections/>} /> 
       <Route  path='/profile/:username' element={<Profile/>} /> 
+      <Route  path='/posted-jobs' element={<PostedJobs/>} /> 
+      <Route  path='/applications/:id' element={<UserJobApplication/>} /> 
+
+
 
       
       <Route path='*' element={<h1>not found</h1>} />

@@ -1,4 +1,4 @@
-$primary:#2274A5;
+$primary:#0a66c2;
 
 
 .create_post_modal{
@@ -45,7 +45,7 @@ $primary:#2274A5;
         border-radius: 10px;
         justify-content: center;
         align-content: center;
-        color: #003f88;
+        color: #0a66c2;
         cursor: pointer;
 
         &:hover{
@@ -58,17 +58,20 @@ $primary:#2274A5;
     display: flex;
     justify-content: end;
     .btn_cancel , .btn_done{
-        background-color: white;
+        background-color: $primary;
         padding: 10px;
-        border: 0.5px solid $primary;
+        border: 2px solid white;
         border-radius: 15px;
         cursor: pointer;
-        color: $primary;
+        color: white;
         font-weight: bold;
         margin-right: 10px;
 
         &:hover{
-            background-color: #bedcee;
+            background-color: rgb(255, 255, 255);
+        border: 2px solid $primary;
+        color: $primary;
+
             // border: 2px solid $primary;
         }
     }
