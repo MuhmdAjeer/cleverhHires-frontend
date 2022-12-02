@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./Profile.scss";
 import { RightBar } from '../../../components/home/rightbar/RightBar'
 import Navbar from "../../../components/NavBar/Navbar";
-import { Add, Cancel, Edit, PlusOne } from "@mui/icons-material";
+import { Add, Cancel, Edit } from "@mui/icons-material";
 import Modal from '../../../components/modal/Modal'
 import AddExperience from '../../../components/user/Experience/AddExperience'
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,7 @@ import { editAbout, getProfile } from "../../../redux/actions/users";
 import { useParams, useNavigate } from 'react-router-dom';
 import moment from "moment";
 import Loader from "../../../components/Loader";
+import { handleUpload } from "../../../s3";
 
 const MODAL_STYLE = {
   position: "fixed",
@@ -33,32 +34,38 @@ export default function Profile() {
   const [updatePicModal, setUpdatePicModal] = useState(false)
   const [ownProfile, setOwnProfile] = useState(false)
   const profile = useSelector((state) => state.user.profile)
+  const refresh = useSelector((state) => state.posts.refresh)
   const navigate = useNavigate()
   const [about, setAbout] = useState(profile?.about)
   const { username } = useParams()
   const [loading, setLoading] = useState(true)
+  const [proPic,setProPic] = useState(null)
 
 
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getProfile(username, navigate, setLoading))
-    const user = JSON.parse(localStorage.getItem('user'))
-
-    if (profile?._id === user?.user?._id) {
-      setOwnProfile(true)
-    }
-    console.log(profile);
-  }, [])
+    dispatch(getProfile(username, navigate, setLoading,setOwnProfile))
+    return(()=>{
+      dispatch({type:'CLEAR_PROFILE'})
+    })
+  }, [refresh])
 
   const handleAboutEdit = () => {
     console.log(about);
     dispatch(editAbout(about))
+    setOpenAbout(false)
+
   }
 
-  const handleProPicUpdate = ()=>{
-
+  const handleProPicSubmit = () => {
+    handleUpload(proPic).then((data)=>{
+      console.log(data);
+    })
+  }
+  const handleProPicUpdate = (event)=>{
+    setProPic(event.target.files[0])
   }
 
   if (loading) {
@@ -83,16 +90,21 @@ export default function Profile() {
               <Cancel className="cancel_icon" />
             </div>
             <div className="modal_body">
-              <div className="imageContainer">
-                <img src="../avatar.jpeg" className="new_post_img" alt="" />
-              </div>
+            <input
+                onChange={(e) => handleProPicUpdate(e)}
+                type="file"
+                id="image_input"
+              />
+              <label className="img_label" htmlFor="image_input">
+                Select image to share
+              </label>
             </div>
             <div className="modal_bottom">
               <div className="modal_actions">
                 <button onClick={() => setUpdatePicModal(false)} className="btn_cancel" o>
                   Cancel
                 </button>
-                <button onClick={handleProPicUpdate} className="btn_done">
+                <button onClick={handleProPicSubmit} className="btn_done">
                   Done
                 </button>
               </div>
@@ -112,7 +124,7 @@ export default function Profile() {
                   alt=""
                 />
                 <img
-                onClick={()=>setUpdatePicModal(true)}
+                  onClick={() => setUpdatePicModal(true)}
                   className="profileUserImg"
                   src={profile?.profileImage ? profile?.profileImage : '../avatarIcon.jpg'}
                   alt=""
@@ -184,9 +196,6 @@ export default function Profile() {
                 <ExperienceCard experience={experience} />
               ))
             }
-            {/* <ExperienceCard />
-            <ExperienceCard />
-            <ExperienceCard /> */}
 
           </div>
 

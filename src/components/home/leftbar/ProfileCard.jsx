@@ -8,9 +8,9 @@ const ProfileCard = () => {
   const [user,setUser] = useState({})
   const navigate = useNavigate()
   useEffect(()=>{
-  const { token } = JSON.parse(localStorage.getItem('user'))
-     const userData = jwtDecode(token)
-     setUser(userData)
+  const User = JSON.parse(localStorage.getItem('user'))
+    //  const userData = jwtDecode(token)
+     setUser(User.user)
      console.log(user,'///');
   },[])
  
@@ -19,8 +19,8 @@ const ProfileCard = () => {
     <div className='profile_card_container'>
       <div className="card">
         <div className="profile">
-          <img className='image' src='../avatar.jpeg' alt="" />
-          <h2  >{user?.name}</h2>
+          <img onClick={()=>navigate(`/profile/${user.username}`)} className='image' src='../avatar.jpeg' alt="" />
+          <h2  >{user?.username}</h2>
         </div>
         <ul>
           <li onClick={()=> navigate('/')} >

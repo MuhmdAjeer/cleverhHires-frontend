@@ -91,7 +91,6 @@ export default function AddExperience({ modalHandler }) {
                             { YEARS &&  YEARS.map((year)=> <MenuItem value={year} >{year}</MenuItem>)}
                         </Select>
                     </div>
-                    <button onClick={formik.handleSubmit} > d</button>
 
 
                     {/* <span>Start Date</span> */}

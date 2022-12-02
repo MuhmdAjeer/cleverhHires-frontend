@@ -47,11 +47,17 @@ export const addExperience = (experience) => async (dispatch) => {
         })
 }
 
-export const getProfile = (username, navigate, loading) => async (dispatch) => {
+export const getProfile = (username, navigate, loading,ownProfile) => async (dispatch) => {
     loading(true)
+    const user = JSON.parse(localStorage.getItem('user'))
     API.getProfile(username)
         .then((response) => {
             dispatch({ type: 'PROFILE', payload: response.data })
+            if(response?.data?._id === user.user._id){
+                ownProfile(true)
+            }
+            // dispatch({ type: 'REFRESH'})
+
             loading(false)
         })
         .catch((err) => {
