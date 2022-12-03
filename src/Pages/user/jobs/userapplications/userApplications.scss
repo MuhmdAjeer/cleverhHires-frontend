@@ -1,0 +1,104 @@
+$small: 500px;
+$medium: 900px;
+$primary:#0a66c2;
+
+.posted_jobs{
+    flex: 5.5;
+
+    @media screen and (max-width: $small) {
+        flex: 12;
+    }
+
+    .posted_jobs_wrapper{
+        padding: 10px;
+    }
+}
+
+.applicants{
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px;
+    border: 1px solid rgb(240, 240, 240);
+
+    span{
+        // font-size: 24px;
+        // font-weight: 500;
+        margin:0;
+    }
+}
+.applicants_card{
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 5px;
+    h1,h3{
+        margin: 0;
+    }
+    img{
+        height: 50px;
+        width: 50px;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+    display: flex;
+
+    .myc_left{
+        display: flex;
+    }
+    .myc_right{
+        margin-right: 5px;
+    }
+
+    &:hover{
+        background-color: whitesmoke;
+
+    }
+    
+}
+
+.applicants_card:first-child{
+    display: flex;
+}
+
+.application_details{
+    h1,h2,h3,h4,h5,h6{
+        margin: 0;
+        color: rgb(44, 44, 44);
+    }
+
+    background-color: whitesmoke;
+    // height: auto;
+    border-radius: 15px;
+    padding: 15px;
+    // margin: 15px;
+}
+
+.applicant_meta{
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    h4{
+        margin: 0;
+    }
+    span{
+        margin: 0;
+        font-size: 12px;
+    }
+}
+
+.application_meta{
+    h4{
+        margin-top: 10px;
+        color: rgb(58, 58, 58);
+    }
+}

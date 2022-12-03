@@ -1,0 +1,49 @@
+$small: 500px;
+$medium: 900px;
+$primary:#2274A5;
+
+.posted_jobs{
+    flex: 5.5;
+
+    @media screen and (max-width: $small) {
+        flex: 12;
+    }
+
+    .posted_jobs_wrapper{
+        padding: 10px;
+    }
+}
+
+.my_jobs{
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px;
+    border: 1px solid rgb(240, 240, 240);
+
+    span{
+        // font-size: 24px;
+        // font-weight: 500;
+        margin:0;
+    }
+}
+.my_jobs_card{
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 15px;
+    h1,h3{
+        margin: 0;
+    }
+    img{
+        height: 50px;
+        width: 50px;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+    display: flex;
+    margin-bottom: 5px;
+
+   &:hover{
+    background-color: whitesmoke;
+   } 
+
+}
