@@ -88,3 +88,9 @@ export const editAbout = (about)=> API.put('/profile/about',{about},{
   }
 }) 
 
+export const updateProfilePic = (imageUrl) => API.put('/profile/image',{imageUrl},{
+  headers : {
+    Authorization : `Bearer ${token}`
+  }
+})
+

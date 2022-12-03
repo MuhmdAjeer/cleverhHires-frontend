@@ -30,7 +30,7 @@ const UserCard = ({user}) => {
     <>
     <div className="user_card">
         <div className="user_card_container">
-            <img className='user_card_img' src={`${user?.profileImg ? user?.profileImg : '../avatarIcon.jpg'}`} alt="" />
+            <img className='user_card_img' src={`${user?.profileImage ? user?.profileImage : '../avatarIcon.jpg'}`} alt="" />
             <h3>{user.lastName}</h3>
             <span>Flutter Developer</span>
             {

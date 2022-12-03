@@ -81,3 +81,13 @@ export const editAbout = (about) => async (dispatch) => {
             toast.error('Cant edit about!')
         })
 }
+
+export const updateProfilePic = (imageUrl) => async(dispatch)=>{
+    API.updateProfilePic(imageUrl)
+    .then((response)=>{
+        dispatch({ type: 'REFRESH' })
+    })
+    .catch((err)=>{
+        toast.error('Profile picture updation failed')
+    })
+}

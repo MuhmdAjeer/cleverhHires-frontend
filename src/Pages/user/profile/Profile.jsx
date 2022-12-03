@@ -7,7 +7,7 @@ import { Add, Cancel, Edit } from "@mui/icons-material";
 import Modal from '../../../components/modal/Modal'
 import AddExperience from '../../../components/user/Experience/AddExperience'
 import { useDispatch, useSelector } from "react-redux";
-import { editAbout, getProfile } from "../../../redux/actions/users";
+import { editAbout, getProfile, updateProfilePic } from "../../../redux/actions/users";
 import { useParams, useNavigate } from 'react-router-dom';
 import moment from "moment";
 import Loader from "../../../components/Loader";
@@ -60,8 +60,12 @@ export default function Profile() {
   }
 
   const handleProPicSubmit = () => {
+
     handleUpload(proPic).then((data)=>{
       console.log(data);
+      dispatch(updateProfilePic(data.location))
+      setUpdatePicModal(false)
+      
     })
   }
   const handleProPicUpdate = (event)=>{
@@ -104,8 +108,8 @@ export default function Profile() {
                 <button onClick={() => setUpdatePicModal(false)} className="btn_cancel" o>
                   Cancel
                 </button>
-                <button onClick={handleProPicSubmit} className="btn_done">
-                  Done
+                <button disabled={!proPic} onClick={handleProPicSubmit} className="btn_done">
+                  Update
                 </button>
               </div>
             </div>
@@ -124,7 +128,7 @@ export default function Profile() {
                   alt=""
                 />
                 <img
-                  onClick={() => setUpdatePicModal(true)}
+                  onClick={() => ownProfile && setUpdatePicModal(true)}
                   className="profileUserImg"
                   src={profile?.profileImage ? profile?.profileImage : '../avatarIcon.jpg'}
                   alt=""

@@ -65,7 +65,7 @@ const UserJobApplication = () => {
                     <div className="applicants_card">
                       <div className='myc_left' >
                         <div>
-                          <img style={{ borderRadius: '50%' }} src="../avatarIcon.jpg" alt="" />
+                          <img style={{ borderRadius: '50%' }} src={application?.seeker?.profileImage ? application?.seeker?.profileImage : '../avatarIcon.jpg'} alt="" />
                         </div>
                         <div>
                           <h3>{application.seeker.username}</h3>
@@ -100,7 +100,7 @@ const UserJobApplication = () => {
                           <div className="modal_body">
                             <div style={{ width: '100%' }} className="application_details">
                               <div onClick={()=>navigate(`/profile/${application?.seeker?.username}`)} className="applicant_meta">
-                                <img src={application?.seeker?.profileImage || '../avatarIcon.jpg'} alt="" />
+                                <img src={application?.seeker?.profileImage ? application?.seeker?.profileImage : '../avatarIcon.jpg'} alt="" />
                                 <div>
                                   <h4>{application?.seeker?.firstName + " " + application?.seeker?.lastName}</h4>
                                   <span>{application?.seeker?.email}</span>

@@ -69,7 +69,7 @@ export default function Post({ post }) {
       <div className="post_wrapper">
         <div className="post_top">
           <div onClick={()=> navigate(`profile/${post?.user?.username}`)} className="post_top_left">
-            <img className="post_profile_img" src={`${post.user?.profileImg ? post.user?.profileImg : '../avatarIcon.jpg'}`} alt="" />
+            <img className="post_profile_img" src={`${post.user?.profileImage ? post.user?.profileImage : '../avatarIcon.jpg'}`} alt="" />
             <div>
 
               <span className="post_username">{post?.user?.lastName}</span>
@@ -146,7 +146,7 @@ export default function Post({ post }) {
 const CommentCard = ({ comment }) => {
   return (
     <div className="comment_card" >
-      <img src={`${comment.user?.profileImg ? comment.user?.profileImg : '../avatarIcon.jpg'}`} alt="" />
+      <img src={`${comment.user?.profileImage ? comment.user?.profileImage : '../avatarIcon.jpg'}`} alt="" />
       <div className="comment_details">
         <div className="comm_details_left">
           <span className="commenter">{comment?.user.lastName}</span>

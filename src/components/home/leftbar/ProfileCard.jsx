@@ -19,7 +19,7 @@ const ProfileCard = () => {
     <div className='profile_card_container'>
       <div className="card">
         <div className="profile">
-          <img onClick={()=>navigate(`/profile/${user.username}`)} className='image' src='../avatar.jpeg' alt="" />
+          <img onClick={()=>navigate(`/profile/${user.username}`)} className='image' src={`${user?.profileImage ? user?.profileImage : '../avatarIcon.jpg'}`} alt="" />
           <h2  >{user?.username}</h2>
         </div>
         <ul>
