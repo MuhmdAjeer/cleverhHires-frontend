@@ -97,7 +97,7 @@ export default function Post({ post }) {
         </div>
         <div className="post_center">
           <span className="post_text">{post.description}</span>
-          <img src={post.imageUrl} className="post_img" alt="" />
+          <img onDoubleClick={() => handleLike(post._id)} src={post.imageUrl} className="post_img" alt="" />
         </div>
         <div className="post_bottom">
           <div className="post_bottom_left">
