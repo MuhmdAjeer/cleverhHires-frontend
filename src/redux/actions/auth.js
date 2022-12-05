@@ -1,7 +1,6 @@
 import * as API from "../../api/index";
 import { SIGNUP, SIGNIN, UPDATE_USER } from "../../constants/actionTypes";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 
 export const signup = (formdata, navigate, loading) => async (dispatch) => {
   try {
@@ -17,6 +16,14 @@ export const signup = (formdata, navigate, loading) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const adminSignin = (formdata,navigate,loading) => async(dispatch)=>{
+  try {
+  
+  } catch (error) {
+    
+  }
+}
 
 export const verifyOtp = (formdata, navigate) => async (dispatch) => {
   try {
