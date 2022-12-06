@@ -2,7 +2,7 @@ import { Cancel } from '@mui/icons-material'
 import ProgressBar from '@ramonak/react-progress-bar'
 import React, { useState } from 'react'
 import { TextField } from '@mui/material'
-import Swal from '@sweetalert/with-react'
+// import Swal from '@sweetalert/with-react'
 import * as yup from 'yup'
 import { useFormik } from 'formik'
 import { useDispatch } from 'react-redux'
@@ -12,6 +12,7 @@ import ResumeViewer from '../Resume/ResumeViewer'
 import { applyJob } from '../../redux/actions/jobs'
 import { handleUpload } from '../../s3'
 import { useEffect } from 'react'
+import toast from 'react-hot-toast'
 
 const stepOne = {
   initialValues: {
@@ -72,6 +73,9 @@ const JobApplication = ({ job,closeModal }) => {
       const formData = {...formikOne.values,...formikTwo.values,pdfUrl}
       dispatch(applyJob(job._id,formData,closeModal))
     })
+    .catch((err)=>{
+      toast.error('Application failed! Try again')
+    })
   }
 
 
@@ -89,7 +93,7 @@ const JobApplication = ({ job,closeModal }) => {
 
   const handleViewResume = (event) => {
     event.preventDefault()
-    Swal(<ResumeViewer resume={viewResume} />)
+    // Swal(<ResumeViewer resume={viewResume} />)
   }
 
 

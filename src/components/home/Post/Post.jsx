@@ -5,7 +5,6 @@ import { MoreVert, ThumbUp, Comment, SendRounded, MoreHoriz, ThumbUpOffAltOutlin
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { likePost, addComment , deletePost} from "../../../redux/actions/posts";
-import swal from 'sweetalert2/dist/sweetalert2'
 
 import {  Menu, MenuItem } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -52,16 +51,7 @@ export default function Post({ post }) {
   
   const handleDelete = (postId) => {
     handleClose()
-    swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        dispatch(deletePost(postId))
-      }
-    })
+    dispatch(deletePost(postId))
   }
   return (
     <div className="post">

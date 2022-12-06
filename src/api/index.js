@@ -9,6 +9,7 @@ export const API = axios.create({
 });
 
 
+
 export const signup = (formData) => API.post("/signup", formData);
 export const signin = (formData) => API.post("/signin", formData);
 export const verifyOtp = (formData) =>
@@ -16,7 +17,7 @@ export const verifyOtp = (formData) =>
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  });
+  })
 
 export const getAllUsers = () => API.get('/',{
   headers: {

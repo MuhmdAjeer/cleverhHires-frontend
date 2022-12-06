@@ -10,7 +10,7 @@ export const API = axios.create({
 });
 
 export const becomeHirer = (formData) =>
-  API.post("/hirer", formData, {
+  API.post(`hirer/request`, formData, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

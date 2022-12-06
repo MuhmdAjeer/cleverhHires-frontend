@@ -6,10 +6,9 @@ import { toast } from "react-hot-toast";
 export const becomeHirer = (formData, navigate, loading) => {
     loading(true);
     API.becomeHirer(formData)
-    
       .then((response) => {
         loading(false);
-        navigate("/");
+        // navigate("/");
         toast.success("Your application has been sended");
       })
       .catch((err) => {
