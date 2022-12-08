@@ -9,6 +9,7 @@ import { getAllPosts, uploadPost } from "../../../../redux/actions/posts";
 import "./createPost.scss";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Loader from "../../../Loader";
 
 export const CreatePost = ({ close }) => {
   const location = useLocation();
@@ -16,6 +17,7 @@ export const CreatePost = ({ close }) => {
   const [selectedImage, setImage] = useState(null);
   const [uploadSource, setSource] = useState("");
   const [description, setDescription] = useState("");
+  const [loading,setLoading] = useState(false);
   const  dispatch =   useDispatch()
 
   const handlePostImage = (event) => {
@@ -45,6 +47,7 @@ export const CreatePost = ({ close }) => {
     const user = JSON.parse(localStorage.getItem("user"));
     const token = user?.token;
     console.log(location);
+    setLoading(true)
     axios
       .post(
         "http://localhost:5000/api/v1/user/posts",
@@ -56,6 +59,8 @@ export const CreatePost = ({ close }) => {
         }
       )
       .then((response) => {
+    setLoading(false)
+
         dispatch({type:'UPDATE_POST'})
         // dispatch(getAllPosts())
         toast.success("Post Uploaded successfully");
@@ -63,9 +68,15 @@ export const CreatePost = ({ close }) => {
         setImage(null);
       })
       .catch((err) => {
+    setLoading(false)
+
         toast.error("Post upload Failed");
       });
   };
+
+  if(loading){
+    return <Loader/>
+  }
 
   return (
     <>

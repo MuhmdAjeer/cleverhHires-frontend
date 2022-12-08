@@ -93,7 +93,7 @@ export default function Post({ post }) {
           <div className="post_bottom_left">
             {
               liked ?
-                <ThumbUp onClick={() => handleLike(post._id)} className="like_btn" />
+                <ThumbUp  onClick={() => handleLike(post._id)} className="like_btn" />
                 :
                 <ThumbUpOffAltOutlined onClick={() => handleLike(post._id)} className="like_btn" />
             }

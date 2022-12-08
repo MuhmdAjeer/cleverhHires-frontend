@@ -7,8 +7,9 @@ import {useNavigate} from 'react-router-dom'
 
 import Navbar from "../../../components/NavBar/Navbar"
 import './PostJob.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { postJob } from '../../../redux/actions/jobs'
+import * as API from '../../../api/index'
 
 const PostJob = () => {
     const [step, setStep] = useState(1)
@@ -17,6 +18,7 @@ const PostJob = () => {
     const [description,setDescription] = useState('')
     const dispatch = useDispatch()
     const [loading,setLoading] = useState(false);
+    const [hirer,setHirer] = useState(false)
     const navigate = useNavigate()
     
     const initialValuesStep1 = {
@@ -96,7 +98,19 @@ const PostJob = () => {
         dispatch(postJob(jobPostForm,navigate,setLoading))
     }
 
-    
+    useEffect(() => {
+        const { user } = JSON.parse(localStorage.getItem('user'))
+        API.getProfile(user?.username).then(({ data }) => {
+          if (data.hirer) setHirer(true)
+          else setHirer(false)
+        })
+      }, [])
+
+    if(!hirer){
+        return(
+            <div>Not an hirer</div>
+        )
+    }
 
     return (
         <>

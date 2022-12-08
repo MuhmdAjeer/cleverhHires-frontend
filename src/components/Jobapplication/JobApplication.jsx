@@ -172,9 +172,9 @@ const JobApplication = ({ job,closeModal }) => {
                     {/* <TextField fullWidth size='small' label='Email' color='primary' /> */}
                     <h6 className='question' >In how much days you can Join</h6>
                     {/* <div> */}
-                    <TextField helperText={formikTwo.errors.joiningTime} size='small' value={formikTwo.values.joiningTime} onChange={formikTwo.handleChange} name='joiningTime' label='Joining Time' color='primary' />
+                    <TextField helperText={formikTwo.errors.joiningTime} size='small' value={formikTwo.values.joiningTime} onChange={formikTwo.handleChange} name='joiningTime' label='Joining Time in days' color='primary' />
                     <h6 className='question' >whats the preffered CTC</h6>
-                    <TextField size='small' value={formikTwo.values.ctc} onChange={formikTwo.handleChange} name='ctc' label='Email' color='primary' />
+                    <TextField size='small' value={formikTwo.values.ctc} onChange={formikTwo.handleChange} name='ctc' label='CTC' color='primary' />
                     {/* </div> */}
                   </form>
                 </>

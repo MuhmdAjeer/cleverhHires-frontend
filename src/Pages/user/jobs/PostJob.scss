@@ -7,6 +7,8 @@ $primary:#0a66c2;
 .post_job_container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 80vh;
 
     .form_inputs {
         margin: 10px;
@@ -85,7 +87,7 @@ $primary:#0a66c2;
     box-sizing: border-box;
     padding: 5px;
     font-family: Arial, Helvetica, sans-serif;
-    // width: 85%;
+    width: 100%;
     // max-height: 70%;
     resize: none;
     &:focus {
