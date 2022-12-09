@@ -25,6 +25,8 @@ export const getAllUsers = () => API.get('/',{
   },
 });
 
+export const getUser = (id)=> API.get(`/${id}`)
+
 export const followUser = (userId) => API.put(`/follow/${userId}`,{},{
   headers : {
     Authorization: `Bearer ${token}`,

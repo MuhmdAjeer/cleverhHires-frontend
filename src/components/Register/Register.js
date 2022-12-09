@@ -63,6 +63,8 @@ function SignIn() {
 
 
     return (
+        <div className='signin_page' >
+
         <Container>
             <h1 style={{margin:0,marginBottom:"10px"}} >Join us</h1>
             <p>Get signed into the world of job hirers and seekers!</p>
@@ -83,6 +85,7 @@ function SignIn() {
             <p style={{ textAlign: 'center' }} onClick={() => navigate('/signin')} >Already joined? Sign in !</p>
 
         </Container>
+        </div>
 
     )
 }

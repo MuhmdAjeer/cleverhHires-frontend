@@ -49,6 +49,8 @@ function SignIn({admin}) {
     }
 
     return (
+        <div className='signin_page' >
+
         <Container>
             <h1>Sign In</h1>
             {
@@ -64,9 +66,10 @@ function SignIn({admin}) {
 
             {
                 !admin && 
-            <p style={{ textAlign: 'center' }} onClick={() => navigate('/signup')}>New to cleverhires? Signup</p>
+                <p style={{ textAlign: 'center' }} onClick={() => navigate('/signup')}>New to cleverhires? Signup</p>
             }
         </Container>
+            </div>
 
     )
 }

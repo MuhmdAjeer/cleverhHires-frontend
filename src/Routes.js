@@ -14,6 +14,7 @@ import Profile from './Pages/user/profile/Profile';
 import PostedJobs from './Pages/user/jobs/posted-jobs/PostedJobs';
 import UserJobApplication from './Pages/user/jobs/userapplications/UserJobApplication';
 import AdminLogin from './Pages/admin/AdminLogin';
+import { Chat } from './Pages/chat/Chat';
 
 
 
@@ -45,6 +46,8 @@ function Routes() {
       <Route  path='/profile/:username' element={<Profile/>} /> 
       <Route  path='/posted-jobs' element={<PostedJobs/>} /> 
       <Route  path='posted-jobs/:id' element={<UserJobApplication/>} /> 
+      <Route  path='chats' element={<Chat/>} /> 
+
 
       <Route path='/admin/login' element={<AdminLogin/>} />
 

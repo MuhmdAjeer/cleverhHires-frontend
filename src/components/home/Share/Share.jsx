@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../../modal/Modal";
 import { CreatePost } from "./create-post/CreatePost";
 import EmojiPicker from 'emoji-picker-react'
@@ -11,6 +11,7 @@ import {
   Send,
   VideoCameraFront,
 } from "@mui/icons-material";
+import * as API from "../../../api/index"; 
 
 
 
@@ -33,6 +34,7 @@ const MODAL_STYLE = {
 const Share = () => {
   const [isOpen, setOpen] = useState(false);
   const [selectedImage, setImage] = useState(null);
+  const [user,setUser] = useState()
   const [input, setInput] = useState("");
   const [share, setShare] = useState(false);
   const [showEmoji,setShowEmoji] = useState(false)
@@ -59,12 +61,19 @@ const Share = () => {
     setInput(input+emoji)
   }
 
+  useEffect(()=>{
+    const { user : User } = JSON.parse(localStorage.getItem('user'))
+    API.getProfile(User?.username).then(({ data }) => {
+      setUser(data)
+    })
+  },[])
+
   return (
     <>
       <div className="share">
         <div className="share_wrapper">
           <div className="share_top">
-            <img className="share_profile_img" src="./avatar.jpeg" alt="" />
+            <img className="share_profile_img" src={`${user?.profileImage ? user?.profileImage : '../avatarIcon.jpg'}`} alt="" />
             <textarea
               className="share_input"
               value={input}

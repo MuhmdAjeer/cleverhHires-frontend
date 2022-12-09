@@ -28,6 +28,8 @@ function Otp() {
         dispatch(verifyOtp(requestBody, navigate))
     }
     return (
+        <div className='signin_page' >
+
         <Container>
             <h3 style={{ margin: '0', textAlign: 'center' }} >Enter the code that was sent to your mobile phone</h3>
             <p style={{ textAlign: 'center', fontSize: '14px', color: 'grey' }}>To finish registering, please enter the verification code we gave you.
@@ -39,6 +41,7 @@ function Otp() {
             <p style={{ textAlign: 'center' }}>Did'nt Receive Code?</p>
             <h6 style={{ color: '#2274A5', textAlign: 'center', margin: '0' }}>Resend Code</h6>
         </Container>
+        </div>
     )
 }
 

@@ -3,15 +3,21 @@ import './profilecard.scss'
 import { People, RssFeed, Work ,Group } from '@mui/icons-material'
 import jwtDecode from 'jwt-decode'
 import {  useNavigate } from 'react-router-dom'
+import * as API from '../../../api/index'
 
 const ProfileCard = () => {
   const [user,setUser] = useState({})
   const navigate = useNavigate()
   useEffect(()=>{
-  const User = JSON.parse(localStorage.getItem('user'))
-    //  const userData = jwtDecode(token)
-     setUser(User.user)
-     console.log(user,'///');
+  // const User = JSON.parse(localStorage.getItem('user'))
+  //   //  const userData = jwtDecode(token)
+    //  setUser(User.user)
+    //  console.log(user,'///');
+
+     const { user : User } = JSON.parse(localStorage.getItem('user'))
+     API.getProfile(User?.username).then(({ data }) => {
+       setUser(data)
+     })
   },[])
  
 

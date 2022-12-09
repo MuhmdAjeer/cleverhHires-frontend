@@ -2,7 +2,7 @@ import { Group, People, RssFeed, Work } from "@mui/icons-material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getProfile } from "../../../redux/actions/users";
 import * as API from '../../../api/index'
 
@@ -11,7 +11,6 @@ import "./rightbar.scss";
 
 export const RightBar = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [hirer, setHirer] = useState(true)
 
   useEffect(() => {
@@ -29,19 +28,30 @@ export const RightBar = () => {
           {
             hirer ?
               <>
-                <li onClick={() => navigate("/post-job")}>
+              <Link to='/post-job' >
+                <li>
                   <span>Post Job</span>
                 </li>
-                <li onClick={() => navigate("/posted-jobs")} >
+              </Link>
+              <Link to='/posted-jobs' >
+                <li >
                   <span>My Job posts</span>
                 </li>
+              </Link>
               </>
               :
+              <Link to='/become-hirer'>
               <li onClick={() => navigate("/become-hirer")} >
                 <span>Be a Hirer</span>
               </li>
+              </Link>
 
           }
+          <Link to='/chats' >
+          <li>
+            <span>Chat</span>
+          </li>
+          </Link>
         </ul>
       </div>
     </div>
