@@ -5,7 +5,7 @@ export const adminLogin = (formdata,navigate,loading) => async(dispatch)=> {
     ADMIN.signup(formdata)
     .then((response)=>{
         loading(false)
-        navigate('/')
+        navigate('/admin/users')
     })
     .catch((error)=> {
         loading(false)

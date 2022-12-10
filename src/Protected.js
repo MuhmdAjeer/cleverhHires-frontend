@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 
-const Protected = ({Children}) => {
+const Protected = ({children}) => {
 
     const location = useLocation()
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
@@ -15,9 +15,7 @@ const Protected = ({Children}) => {
     if(!user){
         return <Navigate to={'/signin'} />
     }
-  return (
-    <Children/>
-  )
+  return children
 }
 
 export default Protected

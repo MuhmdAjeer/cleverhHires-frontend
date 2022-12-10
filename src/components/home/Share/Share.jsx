@@ -17,6 +17,7 @@ import * as API from "../../../api/index";
 
 
 import "./share.scss";
+import { Link } from "react-router-dom";
 
 const MODAL_STYLE = {
   position: "fixed",
@@ -113,10 +114,12 @@ const Share = () => {
                 <VideoCameraFront htmlColor="#00B147" className="share_icon" />
                 <span className="share_option_text">Video</span>
               </div>
+              <Link to='/jobs' >
               <div className="share_option">
                 <Article htmlColor="#8300C1" className="share_icon" />
-                <span className="share_option_text">Job</span>
+                <span  className="share_option_text">Job</span>
               </div>
+              </Link>
               {input && (
                 <div className="share_option">
                   <Send htmlColor="red" className="share_icon" />

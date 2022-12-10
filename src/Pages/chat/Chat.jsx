@@ -7,6 +7,7 @@ import {io} from 'socket.io-client'
 import {useSelector} from 'react-redux'
 import './Chat.scss'
 import { ChatBox } from '../../components/chatbox/ChatBox'
+import Navbar from '../../components/NavBar/Navbar'
 
 export const Chat = () => {
 
@@ -27,6 +28,12 @@ export const Chat = () => {
       setOnlineUsers(users)
     })
   },[])
+
+  const checkOnlineStatus = (chat)=>{
+    const chatMember = chat.members.find((member)=> member !== user._id)
+    const online = onlineUsers.find((user)=> user.userId === chatMember)
+    return online ? true : false
+  }
 
   useEffect(()=>{
     socket.current.on('receive-message',(data)=>{
@@ -50,6 +57,7 @@ export const Chat = () => {
     try {
       const {data} = await userChats();
       setChats(data)
+      setCurrentChat(data[0])
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -57,6 +65,8 @@ export const Chat = () => {
   }
 
   return (
+    <>
+    <Navbar/>
     <div className='Chat' >
 
       <div className="Left-side-chat">
@@ -67,7 +77,7 @@ export const Chat = () => {
               chats.map((chat)=>(
                 <>
                 <div  onClick={()=>setCurrentChat(chat)}>
-                <Conversation data={chat} currentUserId={user._id} />
+                <Conversation online={checkOnlineStatus(chat)} data={chat} currentUserId={user._id} />
                 </div>
                 </>
               ))
@@ -80,5 +90,6 @@ export const Chat = () => {
       </div>
     </div>
 
+            </>
   )
 }

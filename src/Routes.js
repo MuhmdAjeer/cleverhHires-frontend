@@ -36,24 +36,17 @@ function Routes() {
       <Route path='/signup' element={user ? <Navigate to='/' /> : <Register />} />
       <Route path='/verify' element={user ? <Navigate to='/' /> : <Verifyotp />} />
 
-      {/* <Route path='/become-hirer' element={<Protected Children={<BecomeHirer/>} />} /> */}
-      <Route path='/' element={user ? <Home/> : <Navigate to='/signin' />} />
- 
-      <Route path='/become-hirer' element={user ? <BecomeHirer/> : <Navigate to='/signin' />} />
-      <Route  path='/post-job' element={<PostJob/>} /> 
-      <Route  path='/jobs' element={<Jobs/>} /> 
-      <Route  path='/connections' element={<Connections/>} /> 
-      <Route  path='/profile/:username' element={<Profile/>} /> 
-      <Route  path='/posted-jobs' element={<PostedJobs/>} /> 
-      <Route  path='posted-jobs/:id' element={<UserJobApplication/>} /> 
-      <Route  path='chats' element={<Chat/>} /> 
+      <Route path='/' element={<Protected children={<Home/>} />} />
+      <Route path='/become-hirer' element={<Protected children={<BecomeHirer/>} />} />
+      <Route  path='/post-job' element={<Protected children={<PostJob/>} />} /> 
+      <Route  path='/jobs' element={<Protected children={<Jobs/>}/>} /> 
+      <Route  path='/connections' element={ <Protected children={<Connections/>} />} /> 
+      <Route  path='/profile/:username' element={ <Protected children={<Profile/>} />} /> 
+      <Route  path='/posted-jobs' element={<Protected children={<PostedJobs/> } />} /> 
+      <Route  path='/posted-jobs/:id' element={<Protected children={<UserJobApplication/>} />} /> 
+      <Route  path='/chats' element={ <Protected children={<Chat/>} />} /> 
+      <Route path='/admin/login' element={ user ? <Navigate to='/'/> : <AdminLogin/>} />
 
-
-      <Route path='/admin/login' element={<AdminLogin/>} />
-
-
-
-      
       <Route path='*' element={<h1>not found</h1>} />
     </Switch>
   )
