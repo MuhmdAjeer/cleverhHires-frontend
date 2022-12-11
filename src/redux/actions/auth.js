@@ -40,15 +40,16 @@ export const verifyOtp = (formdata, navigate) => async (dispatch) => {
 export const signin = (formdata, navigate, loading) => async (dispatch) => {
   try {
     loading(true);
-    const response = await API.signin(formdata);
+    const response = await API.signin(formdata)
     console.log(response.data, "ddddd");
     localStorage.setItem("user", JSON.stringify(response.data));
     dispatch({ type: SIGNIN, payload: response.data });
     loading(false);
     navigate("/");
   } catch (error) {
-    console.log(error);
+    console.log(error.response.data);
+    const err = error.response.data.message
     loading(false);
-    toast.error(error.response.data.message);
+    toast.error(err);
   }
 };

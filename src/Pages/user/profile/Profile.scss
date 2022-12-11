@@ -1,3 +1,6 @@
+$small: 500px;
+$medium: 900px;
+$primary:#0a66c2;
 
 
 .profile_page{
@@ -11,6 +14,10 @@
     // margin-left: 10%;
     // margin: 0 10%; 
     max-width : 60%;
+
+    @media screen and (max-width: $small) {
+        max-width: 90%;
+    }
 }
 
 .profile_page_container{

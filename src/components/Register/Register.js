@@ -18,7 +18,8 @@ const initialValues = {
     firstName: '',
     lastName: '',
     phone: '',
-    password: ''
+    password: '',
+    username : ''
 }
 
 
@@ -35,8 +36,9 @@ const validate = (values) => {
     ) {
         errors.email = 'Invalid email'
     }
-    if (!values.firstName) errors.name = 'Required'
-    if (!values.lastName) errors.name = 'Required'
+    if (!values.firstName) errors.firstName = 'Required'
+    if (!values.lastName) errors.lastName = 'Required'
+    if (!values.username) errors.username = 'Required'
     if (values.password.length < 8) errors.password = 'Minimum of 8 characters required'
     return errors;
 }
@@ -75,6 +77,7 @@ function SignIn() {
                 <Input error={formik.errors.email && formik.touched.email} formik={formik} label='Email' name='email' autoFocus />
                 <Input error={formik.errors.firstName && formik.touched.firstName} formik={formik} label='First Name' name='firstName' />
                 <Input error={formik.errors.lastName && formik.touched.lastName} formik={formik} label='Last Name' name='lastName' />
+                <Input error={formik.errors.username && formik.touched.username} formik={formik} label='Username' name='username' />
                 <Input error={formik.errors.phone && formik.touched.phone} formik={formik} label='Phone' name='phone' />
                 <Input password error={formik.errors.password && formik.touched.password} formik={formik} label='Password' name='password' />
 

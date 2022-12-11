@@ -10,7 +10,6 @@ import {  Menu, MenuItem } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function Post({ post }) {
-  console.log(post);
   const [commentOpen, setCommentOpen] = useState(false)
   const [comment, setComment] = useState('')
   const [liked, setLiked] = useState(false)

@@ -9,10 +9,6 @@ const ProfileCard = () => {
   const [user,setUser] = useState({})
   const navigate = useNavigate()
   useEffect(()=>{
-  // const User = JSON.parse(localStorage.getItem('user'))
-  //   //  const userData = jwtDecode(token)
-    //  setUser(User.user)
-    //  console.log(user,'///');
 
      const { user : User } = JSON.parse(localStorage.getItem('user'))
      API.getProfile(User?.username).then(({ data }) => {
@@ -41,10 +37,10 @@ const ProfileCard = () => {
             <People/>
             <span>Connections</span>
           </li>
-          <li>
+          {/* <li>
             <Group />
             <span>Followers</span>
-          </li>
+          </li> */}
         </ul>
       </div>
       

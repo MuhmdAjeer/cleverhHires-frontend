@@ -58,6 +58,8 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import Logo from '../logo/Logo';
 import { Home, People, Work } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import * as API from '../../api/index'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -100,12 +102,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+  const [hirer,setHirer] = React.useState(false)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const navigate = useNavigate()
-
+  
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const { user } = JSON.parse(localStorage.getItem('user'))
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -133,6 +137,13 @@ export default function Navbar() {
     const {user} = JSON.parse(localStorage.getItem('user'))
     navigate(`/profile/${user.username}`)
   }
+
+  useEffect(() => {
+    API.getProfile(user?.username).then(({ data }) => {
+      if (data.hirer) setHirer(true)
+      else setHirer(false)
+    })
+  }, [])
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -173,26 +184,32 @@ export default function Navbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <Link to='/chats' >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
+          <Badge  color="error">
+            <Work />
           </Badge>
         </IconButton>
         <p>Messages</p>
       </MenuItem>
+      </Link>
+
+      <Link to='/jobs' >
       <MenuItem>
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
           color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
+          >
+          <Badge  color="error">
             <NotificationsIcon />
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <p>Jobs</p>
       </MenuItem>
+          </Link>
+      <Link to={`/profile/${user.username}`} >
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -200,11 +217,95 @@ export default function Navbar() {
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
-        >
+          >
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
+          </Link>
+
+          <Link to={'/'} >
+      <MenuItem onClick={handleProfileMenuOpen}>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+          >
+          <Home />
+        </IconButton>
+        <p>Home</p>
+      </MenuItem>
+          </Link>
+
+          <Link to={'/connections'} >
+      <MenuItem onClick={handleProfileMenuOpen}>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+          >
+          <People />
+        </IconButton>
+        <p>Connections</p>
+      </MenuItem>
+          </Link>
+
+          {hirer ? 
+          <>
+                      <Link to={'/post-job'} >
+                      <MenuItem onClick={handleProfileMenuOpen}>
+                        <IconButton
+                          size="large"
+                          aria-label="account of current user"
+                          aria-controls="primary-search-account-menu"
+                          aria-haspopup="true"
+                          color="inherit"
+                          >
+                          {/* <Home /> */}
+                        </IconButton>
+                        <p>Post Job</p>
+                      </MenuItem>
+                          </Link>
+
+                          <Link to={'/posted-jobs'} >
+                      <MenuItem onClick={handleProfileMenuOpen}>
+                        <IconButton
+                          size="large"
+                          aria-label="account of current user"
+                          aria-controls="primary-search-account-menu"
+                          aria-haspopup="true"
+                          color="inherit"
+                          >
+                          {/* <Home /> */}
+                        </IconButton>
+                        <p>Posted Jobs</p>
+                      </MenuItem>
+                          </Link>
+                          
+                            </>
+
+                          :
+
+                          <Link to={'/become-hirer'} >
+                          <MenuItem onClick={handleProfileMenuOpen}>
+                            <IconButton
+                              size="large"
+                              aria-label="account of current user"
+                              aria-controls="primary-search-account-menu"
+                              aria-haspopup="true"
+                              color="inherit"
+                              >
+                              {/* <Home /> */}
+                            </IconButton>
+                            <p>Become Hirer</p>
+                          </MenuItem>
+                              </Link>
+
+        }
     </Menu>
   );
 

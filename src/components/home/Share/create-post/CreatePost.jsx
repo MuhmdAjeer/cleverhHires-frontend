@@ -23,7 +23,6 @@ export const CreatePost = ({ close }) => {
   const handlePostImage = (event) => {
     const image = event.target.files[0];
     setSource(image);
-    console.log(image);
     const imgURL = URL.createObjectURL(image);
     setImage(imgURL);
   };
@@ -46,7 +45,6 @@ export const CreatePost = ({ close }) => {
   const uploadFile = (file) => {
     const user = JSON.parse(localStorage.getItem("user"));
     const token = user?.token;
-    console.log(location);
     setLoading(true)
     axios
       .post(
