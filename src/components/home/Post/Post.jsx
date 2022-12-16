@@ -109,7 +109,7 @@ export default function Post({ post }) {
           commentOpen &&
           <div className="comment_container">
             <div className="comment_input">
-              <img src="../avatar.jpeg" alt="" />
+              <img src={`${post.user?.profileImage ? post.user?.profileImage : '../avatarIcon.jpg'}`} alt="" />
               <textarea autoFocus value={comment} onChange={(event) => setComment(event.target.value)} placeholder="Enter a comment" type="text" />
               {
                 comment.length > 0 &&
