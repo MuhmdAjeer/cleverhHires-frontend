@@ -55,6 +55,7 @@ export const CreatePost = ({ close }) => {
             Authorization: `Bearer ${token}`,
           },
         }
+        
       )
       .then((response) => {
     setLoading(false)
