@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 export const API = axios.create({
-  baseURL: "http://emarald.online/api/v1/admin",
+  baseURL: "https://emarald.online/api/v1/admin",
 });
 
 
