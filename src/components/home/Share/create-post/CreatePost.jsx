@@ -48,7 +48,7 @@ export const CreatePost = ({ close }) => {
     setLoading(true)
     axios
       .post(
-        "http://localhost:5000/api/v1/user/posts",
+        "http://emarald.online/api/v1//user/posts",
         { image: file, description },
         {
           headers: {
