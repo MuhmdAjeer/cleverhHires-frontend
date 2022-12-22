@@ -41,7 +41,7 @@ const JobCard = ({job,setJob}) => {
           <div className="left">
 
             <div className="top_left">
-              <img className='img' src="../google.png" alt="" />
+              <img className='img' src="../building.png" alt="" />
               <div className="top_left_details">
                 <span className='job_role' >{job.jobRole}</span>
                 <span className='company_name' >{job.hirer.company}</span>

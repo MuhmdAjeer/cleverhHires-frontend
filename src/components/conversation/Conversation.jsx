@@ -5,15 +5,16 @@ import { getUser } from '../../api';
 const Conversation = ({ data, currentUserId , online }) => {
 
   const [userData, setUserData] = useState(null);
-
   useEffect(() => {
     getUserData()
   }, [])
 
   const getUserData = async () => {
     try {
+      alert(currentUserId)
       const userId = data.members.find((id) => id !== currentUserId)
       const response = await getUser(userId);
+      console.log({response:response.data});
       setUserData(response.data)
 
     } catch (error) {
