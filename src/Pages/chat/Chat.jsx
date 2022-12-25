@@ -22,7 +22,7 @@ export const Chat = () => {
 
 
   useEffect(()=>{
-    socket.current = io('https://emarald.online/socket')
+    socket.current = io('https://emarald.online/socket').connect()
     socket.current.emit('new-user-add',user._id)
     socket.current.on('get-users',(users)=>{
       setOnlineUsers(users)
