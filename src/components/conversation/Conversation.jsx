@@ -13,8 +13,6 @@ const Conversation = ({ data, currentUserId , online }) => {
 
   const getUserData = async () => {
     try {
-      alert(currentUserId)
-      toast.error(JSON.stringify(data))
       const userId = data.members.find((id) => id !== currentUserId)
       toast.error(userId)
       const response = await getUser(userId);
