@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { getUser } from '../../api';
+import { toast } from "react-hot-toast";
+
 
 const Conversation = ({ data, currentUserId , online }) => {
 
@@ -12,7 +14,9 @@ const Conversation = ({ data, currentUserId , online }) => {
   const getUserData = async () => {
     try {
       alert(currentUserId)
+      toast.error(JSON.stringify(data))
       const userId = data.members.find((id) => id !== currentUserId)
+      toast.error(userId)
       const response = await getUser(userId);
       console.log({response:response.data});
       setUserData(response.data)
