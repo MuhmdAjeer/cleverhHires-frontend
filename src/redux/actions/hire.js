@@ -8,7 +8,7 @@ export const becomeHirer = (formData, navigate, loading) => {
     API.becomeHirer(formData)
       .then((response) => {
         loading(false);
-        // navigate("/");
+        navigate("/");
         toast.success("Your application has been sended");
       })
       .catch((err) => {
