@@ -14,7 +14,6 @@ const Conversation = ({ data, currentUserId , online }) => {
   const getUserData = async () => {
     try {
       const userId = data.members.find((id) => id !== currentUserId)
-      toast.error(userId)
       const response = await getUser(userId);
       console.log({response:response.data});
       setUserData(response.data)
