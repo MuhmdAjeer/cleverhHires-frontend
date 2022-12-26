@@ -90,7 +90,7 @@ export const ChatBox = ({ chat, currentUser , setSendMessage , receiveMessage })
                                     className='followerImage' alt="" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
                                 <div className="name" style={{ fontSize: '0.8rem' }} >
                                     <span>{userData?.username}</span>
-                                    <span>Online</span>
+                                    {/* <span>Online</span> */}
                                 </div>
                             </div>
                         </div>

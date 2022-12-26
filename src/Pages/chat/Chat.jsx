@@ -8,6 +8,7 @@ import {useSelector} from 'react-redux'
 import './Chat.scss'
 import { ChatBox } from '../../components/chatbox/ChatBox'
 import Navbar from '../../components/NavBar/Navbar'
+import Loader from '../../components/Loader'
 
 export const Chat = () => {
 
@@ -18,6 +19,7 @@ export const Chat = () => {
   const [receiveMessage,setReceiveMessage] = useState(null)
   const {user} = JSON.parse(localStorage.getItem("user"));
   const socket = useRef()
+  const [loading,setLoading] = useState(false)
 
 
 
@@ -54,14 +56,21 @@ export const Chat = () => {
   },[])
 
   const getChats = async()=>{
+    setLoading(true)
     try {
       const {data} = await userChats();
       setChats(data)
       setCurrentChat(data[0])
+      setLoading(false)
       console.log(data);
     } catch (error) {
+      setLoading(false)
       console.log(error);
     }
+  }
+
+  if(loading){
+    return <Loader/>
   }
 
   return (

@@ -33,7 +33,7 @@ const Conversation = ({ data, currentUserId , online }) => {
           className='followerImage' alt="" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
         <div className="name" style={{ fontSize: '0.8rem' }} >
           <span>{userData?.username}</span>
-          <span>Online</span>
+          <span>{online ? 'Online' : 'Offline'}</span>
         </div>
       </div>
     </div>
