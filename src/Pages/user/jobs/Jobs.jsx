@@ -77,12 +77,12 @@ const Jobs = () => {
 
               <div className="jd_top_left">
                 <h1>{selectedJob?.jobRole}</h1>
-                <h3>Google.Inc</h3>
+                <h3>{selectedJob?.hirer?.hiring?.company}</h3>
                 <h4>{selectedJob?.location}</h4>
               </div>
               <div className="jd_top_right">
 
-                <img src="../google.png" alt="" />
+                <img src="../building.png" alt="" />
               </div>
             </div>
 
