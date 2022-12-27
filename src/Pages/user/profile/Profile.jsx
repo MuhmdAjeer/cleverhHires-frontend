@@ -203,7 +203,7 @@ export default function Profile() {
 
           </div>
 
-          <div className="profile_meta_card">
+          {/* <div className="profile_meta_card">
             <div className="pro_meta_top">
               <h3>Skills</h3>
               {
@@ -220,7 +220,7 @@ export default function Profile() {
               <div className="skill">{username}</div>
             </div>
 
-          </div>
+          </div> */}
 
         </div>
         <RightBar />
