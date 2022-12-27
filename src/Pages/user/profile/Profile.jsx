@@ -232,7 +232,7 @@ export default function Profile() {
 function ExperienceCard({ experience }) {
   return (
     <div className="exp-card" >
-      <img src="../google.png" alt="" />
+      <img src="../building.png" alt="" />
       <div className="exp-meta">
         <h4>{experience.title}</h4>
         <h5>{experience.companyName}</h5>
